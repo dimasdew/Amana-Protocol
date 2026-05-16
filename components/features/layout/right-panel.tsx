@@ -2,14 +2,15 @@
 
 import { TrendingUp, TrendingDown, Zap, ArrowUpRight, ArrowDownRight } from "lucide-react"
 import { TOKENS } from "@/lib/mock-data"
+import { useChainlinkPrices } from "@/lib/chainlink"
 import { formatUSD, cn } from "@/lib/utils"
 
-const PORTFOLIO = [
-  { token: TOKENS.ETH, amount: 4.82, value: 18544, change: 2.34 },
-  { token: TOKENS.WBTC, amount: 0.12, value: 8092, change: 1.12 },
-  { token: TOKENS.USDC, amount: 12450, value: 12450, change: 0 },
-  { token: TOKENS.SOL, amount: 62.4, value: 11384, change: 5.67 },
-  { token: TOKENS.BNB, amount: 1.8, value: 1077, change: 0.92 },
+const PORTFOLIO_HOLDINGS = [
+  { token: TOKENS.ETH, amount: 4.82, fallbackPrice: 3847.20, change: 2.34 },
+  { token: TOKENS.WBTC, amount: 0.12, fallbackPrice: 67432.10, change: 1.12 },
+  { token: TOKENS.USDC, amount: 12450, fallbackPrice: 1.00, change: 0 },
+  { token: TOKENS.SOL, amount: 62.4, fallbackPrice: 182.44, change: 5.67 },
+  { token: TOKENS.BNB, amount: 1.8, fallbackPrice: 598.33, change: 0.92 },
 ]
 
 const ACTIVITY = [
@@ -26,6 +27,19 @@ const GAS = [
 ]
 
 export function RightPanel() {
+  const { prices } = useChainlinkPrices(
+    PORTFOLIO_HOLDINGS.map((h) => h.token.symbol),
+    { refetchInterval: 30_000 }
+  )
+
+  const portfolio = PORTFOLIO_HOLDINGS.map((h) => {
+    const livePrice = prices[h.token.symbol]?.price
+    const price = livePrice ?? h.fallbackPrice
+    return { ...h, value: h.amount * price, isLive: !!livePrice }
+  })
+
+  const totalValue = portfolio.reduce((sum, item) => sum + item.value, 0)
+
   return (
     <aside className="hidden xl:flex w-[260px] shrink-0 border-l border-[var(--color-border-subtle)] bg-[var(--color-bg-primary)] overflow-y-auto flex-col gap-5 p-4 transition-colors">
       {/* Gas */}
@@ -68,13 +82,13 @@ export function RightPanel() {
               <span className="text-[10px] font-mono font-bold">+2.4%</span>
             </div>
           </div>
-          <div className="text-[22px] font-bold font-mono mt-1">$51,704</div>
+          <div className="text-[22px] font-bold font-mono mt-1">{formatUSD(totalValue)}</div>
           <div className="text-[11px] text-[var(--color-text-muted)] font-mono mt-[2px]">
-            +$1,204.30 today
+            {portfolio.some((p) => p.isLive) ? "⬡ Live via Chainlink" : "Estimated"}
           </div>
         </div>
         <div className="flex flex-col gap-[2px]">
-          {PORTFOLIO.map((item) => (
+          {portfolio.map((item) => (
             <div key={item.token.symbol} className="flex items-center gap-2 py-[6px]">
               <TokenIcon symbol={item.token.symbol} />
               <div className="flex-1 min-w-0">

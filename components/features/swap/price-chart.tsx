@@ -14,6 +14,7 @@ import {
 } from "recharts"
 import { TokenPair } from "@/components/ui/token-icon"
 import { formatUSD, cn } from "@/lib/utils"
+import { useChainlinkPrice } from "@/lib/chainlink"
 import type { Timeframe } from "@/types"
 
 const TIMEFRAMES: Timeframe[] = ["1H", "1D", "1W", "1M", "3M", "1Y"]
@@ -54,10 +55,12 @@ const PAIR_STATS = {
 
 export function PriceChart() {
   const [timeframe, setTimeframe] = useState<Timeframe>("1D")
+  const { price: oraclePrice } = useChainlinkPrice("ETH")
+  const basePrice = oraclePrice ?? 3847.2
 
   const chartData = useMemo(
-    () => generateChartData(TIMEFRAME_POINTS[timeframe], 3847.2),
-    [timeframe]
+    () => generateChartData(TIMEFRAME_POINTS[timeframe], basePrice),
+    [timeframe, basePrice]
   )
 
   const currentPrice = chartData[chartData.length - 1].price

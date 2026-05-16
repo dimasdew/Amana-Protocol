@@ -7,6 +7,7 @@ import { useSwapQuote, useTokenBalance } from "@/hooks/use-swap"
 import { TokenIcon } from "@/components/ui/token-icon"
 import { formatUSD, formatToken, cn } from "@/lib/utils"
 import { TOKENS } from "@/lib/mock-data"
+import { useChainlinkPrices } from "@/lib/chainlink"
 import type { SlippageTolerance, Token } from "@/types"
 
 const SLIPPAGE_OPTIONS: SlippageTolerance[] = ["0.1", "0.5", "1.0"]
@@ -26,10 +27,20 @@ export function SwapPanel() {
 
   const [showSettings, setShowSettings] = useState(false)
 
+  // Chainlink live prices
+  const { prices: oraclePrices } = useChainlinkPrices(
+    [fromToken.symbol, toToken.symbol],
+    { refetchInterval: 15_000 }
+  )
+  const fromPrice = oraclePrices[fromToken.symbol]?.price ?? fromToken.price ?? 0
+  const toPrice = oraclePrices[toToken.symbol]?.price ?? toToken.price ?? 0
+
   const { data: quote, isLoading: quoteLoading } = useSwapQuote(
     fromToken,
     toToken,
-    fromAmount
+    fromAmount,
+    fromPrice,
+    toPrice
   )
   const { data: balance } = useTokenBalance(fromToken)
 
@@ -52,13 +63,13 @@ export function SwapPanel() {
   }
 
   const fromValueUSD =
-    fromAmount && fromToken.price
-      ? formatUSD(parseFloat(fromAmount) * fromToken.price)
+    fromAmount && fromPrice
+      ? formatUSD(parseFloat(fromAmount) * fromPrice)
       : null
 
   const toValueUSD =
-    toAmount && toToken.price
-      ? formatUSD(parseFloat(toAmount) * toToken.price)
+    toAmount && toPrice
+      ? formatUSD(parseFloat(toAmount) * toPrice)
       : null
 
   return (
@@ -190,7 +201,7 @@ export function SwapPanel() {
         {quote && (
           <div className="mt-3 bg-[var(--color-bg-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-[10px] space-y-[6px]">
             <InfoRow label="Exchange Rate">
-              1 {fromToken.symbol} = {formatToken(fromToken.price! / toToken.price!)} {toToken.symbol}
+              1 {fromToken.symbol} = {formatToken(fromPrice / toPrice)} {toToken.symbol}
             </InfoRow>
             <InfoRow label="Price Impact">
               <span className={quote.priceImpact < 0.5 ? "text-[#C9A84C]" : quote.priceImpact < 2 ? "text-[#D4A853]" : "text-[#800020]"}>
@@ -198,7 +209,7 @@ export function SwapPanel() {
               </span>
             </InfoRow>
             <InfoRow label="Protocol Fee">
-              {quote.fee}% (~{formatUSD((parseFloat(fromAmount) * fromToken.price! * quote.fee) / 100)})
+              {quote.fee}% (~{formatUSD((parseFloat(fromAmount) * fromPrice * quote.fee) / 100)})
             </InfoRow>
             <InfoRow label="Min. Received">
               {formatToken(Number(quote.minReceived) / 10 ** toToken.decimals)} {toToken.symbol}

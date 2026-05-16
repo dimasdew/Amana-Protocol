@@ -4,16 +4,20 @@ import { useQuery } from "@tanstack/react-query"
 import { useAccount, useBalance, useChainId } from "wagmi"
 import type { Token, SwapQuote } from "@/types"
 
-// Simulate fetching a swap quote — in production, call 1inch/Uniswap SDK here
+// Simulate fetching a swap quote — uses Chainlink oracle prices when available
 async function fetchSwapQuote(
   fromToken: Token,
   toToken: Token,
-  amount: string
+  amount: string,
+  fromOraclePrice?: number,
+  toOraclePrice?: number
 ): Promise<SwapQuote> {
   await new Promise((r) => setTimeout(r, 400)) // simulate network
 
   const fromAmt = parseFloat(amount)
-  const rate = (fromToken.price ?? 1) / (toToken.price ?? 1)
+  const fromPrice = fromOraclePrice ?? fromToken.price ?? 1
+  const toPrice = toOraclePrice ?? toToken.price ?? 1
+  const rate = fromPrice / toPrice
   const toAmt = fromAmt * rate * 0.997 // 0.3% fee
 
   return {
@@ -32,11 +36,13 @@ async function fetchSwapQuote(
 export function useSwapQuote(
   fromToken: Token | null,
   toToken: Token | null,
-  amount: string
+  amount: string,
+  fromOraclePrice?: number,
+  toOraclePrice?: number
 ) {
   return useQuery({
-    queryKey: ["swap-quote", fromToken?.address, toToken?.address, amount],
-    queryFn: () => fetchSwapQuote(fromToken!, toToken!, amount),
+    queryKey: ["swap-quote", fromToken?.address, toToken?.address, amount, fromOraclePrice, toOraclePrice],
+    queryFn: () => fetchSwapQuote(fromToken!, toToken!, amount, fromOraclePrice, toOraclePrice),
     enabled: !!fromToken && !!toToken && !!amount && parseFloat(amount) > 0,
     staleTime: 15_000, // re-fetch every 15s
     refetchInterval: 15_000,
