@@ -1,6 +1,6 @@
 "use client"
 
-import { TrendingUp, TrendingDown } from "lucide-react"
+import { TrendingUp, TrendingDown, Zap, ArrowUpRight, ArrowDownRight } from "lucide-react"
 import { TOKENS } from "@/lib/mock-data"
 import { formatUSD, cn } from "@/lib/utils"
 
@@ -13,16 +13,16 @@ const PORTFOLIO = [
 ]
 
 const ACTIVITY = [
-  { type: "Swap", detail: "2.0 ETH → 7,680 USDC", time: "2m", color: "bg-[#C9A84C]/10 text-[#C9A84C]" },
-  { type: "Staked", detail: "12 BNB @ 18.4% APY", time: "1h", color: "bg-[#800020]/10 text-[#800020]" },
-  { type: "Supplied", detail: "8,650 USDC → Lending", time: "3h", color: "bg-[#C9A84C]/10 text-[#C9A84C]" },
-  { type: "Add LP", detail: "ETH/USDC V3 Pool", time: "5h", color: "bg-[#800020]/10 text-[#800020]" },
+  { type: "Swap", detail: "2.0 ETH → 7,680 USDC", time: "2m", icon: "↔", color: "bg-[#C9A84C]/10 text-[#C9A84C]" },
+  { type: "Staked", detail: "12 BNB @ 18.4% APY", time: "1h", icon: "🔥", color: "bg-[#D4A853]/10 text-[#D4A853]" },
+  { type: "Supplied", detail: "8,650 USDC → Lending", time: "3h", icon: "↗", color: "bg-[#9B7A3C]/10 text-[#9B7A3C]" },
+  { type: "Add LP", detail: "ETH/USDC V3 Pool", time: "5h", icon: "+", color: "bg-[#BBA890]/10 text-[#BBA890]" },
 ]
 
 const GAS = [
-  { label: "Slow", gwei: 18, color: "text-[#C9A84C]" },
-  { label: "Avg", gwei: 21, color: "text-[#C9A84C]" },
-  { label: "Fast", gwei: 28, color: "text-[#800020]" },
+  { label: "Slow", gwei: 18, color: "text-[#A09080]" },
+  { label: "Standard", gwei: 21, color: "text-[#C9A84C]" },
+  { label: "Fast", gwei: 28, color: "text-[#D4A853]" },
 ]
 
 export function RightPanel() {
@@ -46,10 +46,10 @@ export function RightPanel() {
             {[...Array(8)].map((_, i) => (
               <div
                 key={i}
-                className={cn("flex-1 h-[3px] rounded-full", {
-                  "bg-[#C9A84C]": i < 5,
-                  "bg-[#2E2E30]": i === 5,
-                  "bg-[#800020]": i > 5,
+                className={cn("flex-1 h-[3px] rounded-full transition-colors", {
+                  "bg-[#A09080]": i < 3,
+                  "bg-[#C9A84C]": i >= 3 && i < 6,
+                  "bg-[#D4A853]": i >= 6,
                 })}
               />
             ))}
@@ -60,11 +60,17 @@ export function RightPanel() {
       {/* Portfolio */}
       <section>
         <SectionTitle>Portfolio</SectionTitle>
-        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[10px] px-3 py-2 mb-2">
-          <div className="text-[11px] text-[#A09080] mb-1">Total Value</div>
-          <div className="text-[22px] font-bold font-mono">$51,704</div>
-          <div className="text-[11px] text-[#C9A84C] font-mono mt-[2px]">
-            +$1,204.30 today (+2.4%)
+        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[10px] px-3 py-3 mb-2">
+          <div className="flex items-center justify-between">
+            <div className="text-[10px] text-[#A09080] uppercase tracking-wider">Total Value</div>
+            <div className="flex items-center gap-1 text-[#C9A84C]">
+              <ArrowUpRight size={10} />
+              <span className="text-[10px] font-mono font-bold">+2.4%</span>
+            </div>
+          </div>
+          <div className="text-[22px] font-bold font-mono mt-1">$51,704</div>
+          <div className="text-[11px] text-[#A09080] font-mono mt-[2px]">
+            +$1,204.30 today
           </div>
         </div>
         <div className="flex flex-col gap-[2px]">
@@ -110,8 +116,8 @@ export function RightPanel() {
               key={i}
               className="flex items-center gap-[10px] px-[10px] py-2 bg-[#1C1C1E] border border-white/[0.07] rounded-[9px]"
             >
-              <span className={cn("w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold shrink-0", item.color)}>
-                {item.type[0]}
+              <span className={cn("w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-bold shrink-0", item.color)}>
+                {item.icon}
               </span>
               <div className="flex-1 min-w-0">
                 <div className="text-[11.5px] font-bold">{item.type}</div>

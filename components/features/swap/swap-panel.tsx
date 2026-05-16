@@ -193,7 +193,7 @@ export function SwapPanel() {
               1 {fromToken.symbol} = {formatToken(fromToken.price! / toToken.price!)} {toToken.symbol}
             </InfoRow>
             <InfoRow label="Price Impact">
-              <span className={quote.priceImpact < 0.1 ? "text-[#C9A84C]" : "text-[#C9A84C]"}>
+              <span className={quote.priceImpact < 0.5 ? "text-[#C9A84C]" : quote.priceImpact < 2 ? "text-[#D4A853]" : "text-[#800020]"}>
                 {quote.priceImpact.toFixed(2)}%
               </span>
             </InfoRow>
@@ -256,7 +256,7 @@ function TokenInput({
             Balance: {formatToken(balance)}{" "}
             <button
               onClick={onMax}
-              className="text-[#800020] hover:text-[#4499FF] transition-colors"
+              className="text-[#C9A84C] hover:text-white font-bold transition-colors"
             >
               MAX
             </button>

@@ -11,12 +11,14 @@ import {
   ListOrdered,
   Wallet,
   Settings,
+  Shield,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const MAIN_ITEMS = [
   {
     label: "Swap",
+    desc: "Trade tokens",
     href: "/",
     icon: ArrowLeftRight,
     color: "text-[#C9A84C]",
@@ -25,27 +27,30 @@ const MAIN_ITEMS = [
   },
   {
     label: "Stake",
+    desc: "Earn rewards",
     href: "/stake",
     icon: Flame,
-    color: "text-[#800020]",
-    bg: "bg-[#800020]/10",
-    badge: "APY 18%",
-    badgeColor: "bg-[#C9A84C]/10 text-[#C9A84C]",
+    color: "text-[#D4A853]",
+    bg: "bg-[#D4A853]/10",
+    badge: "HOT",
+    badgeColor: "bg-[#C9A84C]/15 text-[#C9A84C]",
   },
   {
     label: "Lend / Borrow",
+    desc: "Supply & borrow",
     href: "/lend",
     icon: Building2,
-    color: "text-[#C9A84C]",
-    bg: "bg-[#C9A84C]/10",
+    color: "text-[#BBA890]",
+    bg: "bg-[#BBA890]/10",
     badge: null,
   },
   {
     label: "Liquidity",
+    desc: "Provide LP",
     href: "/liquidity",
     icon: Droplets,
-    color: "text-[#800020]",
-    bg: "bg-[#800020]/10",
+    color: "text-[#9B7A3C]",
+    bg: "bg-[#9B7A3C]/10",
     badge: null,
   },
 ]
@@ -53,18 +58,20 @@ const MAIN_ITEMS = [
 const SECONDARY_ITEMS = [
   {
     label: "Analytics",
+    desc: "Protocol stats",
     href: "/analytics",
     icon: BarChart3,
-    color: "text-[#C9A84C]",
-    bg: "bg-[#C9A84C]/10",
+    color: "text-[#BBA890]",
+    bg: "bg-[#BBA890]/10",
     badge: null,
   },
   {
     label: "Transactions",
+    desc: "History",
     href: "/transactions",
     icon: ListOrdered,
-    color: "text-[#800020]",
-    bg: "bg-[#800020]/10",
+    color: "text-[#A09080]",
+    bg: "bg-[#A09080]/10",
     badge: null,
   },
 ]
@@ -72,6 +79,7 @@ const SECONDARY_ITEMS = [
 const ACCOUNT_ITEMS = [
   {
     label: "Portfolio",
+    desc: "Your assets",
     href: "/portfolio",
     icon: Wallet,
     color: "text-[#C9A84C]",
@@ -80,10 +88,11 @@ const ACCOUNT_ITEMS = [
   },
   {
     label: "Settings",
+    desc: "Preferences",
     href: "/settings",
     icon: Settings,
-    color: "text-[#800020]",
-    bg: "bg-[#800020]/10",
+    color: "text-[#A09080]",
+    bg: "bg-[#A09080]/10",
     badge: null,
   },
 ]
@@ -92,21 +101,38 @@ export function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="w-[220px] shrink-0 border-r border-white/[0.07] flex flex-col gap-1 p-3 overflow-y-auto bg-[#121012]">
-      <SidebarSection label="Explore" />
-      {MAIN_ITEMS.map((item) => (
-        <SidebarItem key={item.href} item={item} pathname={pathname} />
-      ))}
+    <aside className="w-[220px] shrink-0 border-r border-white/[0.07] flex flex-col p-3 overflow-y-auto bg-[#121012]">
+      <SidebarSection label="Trade" />
+      <div className="flex flex-col gap-[2px]">
+        {MAIN_ITEMS.map((item) => (
+          <SidebarItem key={item.href} item={item} pathname={pathname} />
+        ))}
+      </div>
 
-      <SidebarSection label="Analytics" />
-      {SECONDARY_ITEMS.map((item) => (
-        <SidebarItem key={item.href} item={item} pathname={pathname} />
-      ))}
+      <SidebarSection label="Insights" />
+      <div className="flex flex-col gap-[2px]">
+        {SECONDARY_ITEMS.map((item) => (
+          <SidebarItem key={item.href} item={item} pathname={pathname} />
+        ))}
+      </div>
 
       <SidebarSection label="Account" />
-      {ACCOUNT_ITEMS.map((item) => (
-        <SidebarItem key={item.href} item={item} pathname={pathname} />
-      ))}
+      <div className="flex flex-col gap-[2px]">
+        {ACCOUNT_ITEMS.map((item) => (
+          <SidebarItem key={item.href} item={item} pathname={pathname} />
+        ))}
+      </div>
+
+      {/* Protocol badge */}
+      <div className="mt-auto pt-4">
+        <div className="flex items-center gap-2 px-[10px] py-[10px] bg-[#1C1C1E] border border-white/[0.05] rounded-lg">
+          <Shield size={12} className="text-[#C9A84C]" />
+          <div>
+            <p className="text-[10px] font-bold text-[#BBA890]">Amana Protocol</p>
+            <p className="text-[9px] text-[#A09080] font-mono">v1.0.0 · Mainnet</p>
+          </div>
+        </div>
+      </div>
     </aside>
   )
 }
@@ -134,26 +160,30 @@ function SidebarItem({
     <Link
       href={item.href}
       className={cn(
-        "flex items-center gap-[10px] px-[10px] py-2 rounded-lg text-[13px] font-semibold transition-all duration-150 group",
+        "flex items-center gap-[10px] px-[10px] py-[9px] rounded-lg transition-all duration-150 group",
         isActive
-          ? "bg-[#252527] text-white border border-white/[0.12]"
-          : "text-[#BBA890] hover:bg-[#252527] hover:text-white"
+          ? "bg-[#1C1C1E] border border-[#C9A84C]/20"
+          : "border border-transparent hover:bg-[#1C1C1E]/60 hover:border-white/[0.05]"
       )}
     >
       <span
         className={cn(
-          "w-7 h-7 rounded-[7px] flex items-center justify-center shrink-0",
-          item.bg,
-          item.color
+          "w-7 h-7 rounded-[7px] flex items-center justify-center shrink-0 transition-colors",
+          isActive ? "bg-[#C9A84C]/15 text-[#C9A84C]" : cn(item.bg, item.color)
         )}
       >
         <Icon size={14} />
       </span>
-      <span className="flex-1 truncate">{item.label}</span>
+      <div className="flex-1 min-w-0">
+        <span className={cn("text-[13px] font-semibold block truncate", isActive ? "text-white" : "text-[#BBA890] group-hover:text-white")}>
+          {item.label}
+        </span>
+        <span className="text-[10px] text-[#A09080] truncate block">{item.desc}</span>
+      </div>
       {"badge" in item && item.badge && (
         <span
           className={cn(
-            "text-[10px] font-bold px-[7px] py-[2px] rounded-full font-mono",
+            "text-[9px] font-bold px-[6px] py-[2px] rounded-full",
             (item as typeof MAIN_ITEMS[1]).badgeColor
           )}
         >
