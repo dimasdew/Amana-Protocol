@@ -104,7 +104,7 @@ export default function LiquidityPage() {
             </thead>
             <tbody>
               {MOCK_POOLS.map((pool, i) => (
-                <PoolRow key={pool.id} pool={pool} rank={i + 1} />
+                <PoolRow key={pool.id} pool={pool} rank={i + 1} onAddLiquidity={(p) => toast("info", "Add Liquidity", `Opening ${p.token0.symbol}/${p.token1.symbol} pool`)} />
               ))}
             </tbody>
           </table>

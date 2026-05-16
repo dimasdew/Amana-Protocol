@@ -281,7 +281,7 @@ export default function LandingPage() {
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
-            <a href="https://github.com" className="btn-secondary" style={{ fontSize: 16, padding: "16px 36px" }}>View on GitHub</a>
+            <a href="https://github.com/dimasdew/Amana-Protocol" target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ fontSize: 16, padding: "16px 36px" }}>View on GitHub</a>
           </div>
           <p style={{ marginTop: 20, fontSize: 12, color: "var(--text3)", fontFamily: "var(--mono)" }}>Non-custodial · Open source · Audited</p>
         </div>
@@ -300,12 +300,12 @@ export default function LandingPage() {
             </div>
             <div className="footer-cols">
               <div className="footer-col"><h4>Product</h4><Link href="/dex">Swap</Link><Link href="/dex/stake">Stake</Link><Link href="/dex/lend">Lend / Borrow</Link><Link href="/dex/liquidity">Liquidity</Link><Link href="/dex/analytics">Analytics</Link><Link href="/dex/portfolio">Portfolio</Link></div>
-              <div className="footer-col"><h4>Developers</h4><a href="#">Documentation</a><a href="#">GitHub</a><a href="#">Smart Contracts</a><a href="#">Bug Bounty</a></div>
-              <div className="footer-col"><h4>Community</h4><a href="#">Twitter / X</a><a href="#">Discord</a><a href="#">Telegram</a><a href="#">Blog</a></div>
+              <div className="footer-col"><h4>Developers</h4><a href="https://github.com/dimasdew/Amana-Protocol" target="_blank" rel="noopener noreferrer">Documentation</a><a href="https://github.com/dimasdew/Amana-Protocol" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://github.com/dimasdew/Amana-Protocol/tree/main/contracts" target="_blank" rel="noopener noreferrer">Smart Contracts</a><a href="https://github.com/dimasdew/Amana-Protocol/issues" target="_blank" rel="noopener noreferrer">Bug Bounty</a></div>
+              <div className="footer-col"><h4>Community</h4><a href="https://x.com" target="_blank" rel="noopener noreferrer">Twitter / X</a><a href="https://discord.gg" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://t.me" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://github.com/dimasdew/Amana-Protocol" target="_blank" rel="noopener noreferrer">Blog</a></div>
             </div>
           </div>
           <div className="footer-bottom">
-            <span>© 2025 Amana Protocol. Open source MIT license.</span>
+            <span>© 2026 Amana Protocol. Open source MIT license.</span>
             <span>Built with wagmi v2 + Next.js 14</span>
           </div>
         </div>
@@ -327,7 +327,7 @@ function MobileNav() {
         <a href="#features" className="nav-link">Features</a>
         <a href="#how" className="nav-link">How it Works</a>
         <a href="#stack" className="nav-link">Tech Stack</a>
-        <a href="#" className="nav-link">Docs</a>
+        <a href="https://github.com/dimasdew/Amana-Protocol" target="_blank" rel="noopener noreferrer" className="nav-link">Docs</a>
       </div>
       <Link href="/dex" className="nav-cta nav-cta-desktop">Launch App →</Link>
 
@@ -348,7 +348,7 @@ function MobileNav() {
           <a href="#features" className="mobile-link">Features</a>
           <a href="#how" className="mobile-link">How it Works</a>
           <a href="#stack" className="mobile-link">Tech Stack</a>
-          <a href="#" className="mobile-link">Docs</a>
+          <a href="https://github.com/dimasdew/Amana-Protocol" target="_blank" rel="noopener noreferrer" className="mobile-link">Docs</a>
           <Link href="/dex" className="btn-primary" style={{ textAlign: "center", marginTop: 8 }}>
             Launch App →
           </Link>
