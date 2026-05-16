@@ -11,18 +11,18 @@ module.exports = {
     extend: {
       colors: {
         bg: {
-          primary: "#0A0C10",
-          secondary: "#0F1218",
-          tertiary: "#161B24",
-          elevated: "#1C2433",
+          primary: "#121012",
+          secondary: "#1C1C1E",
+          tertiary: "#252527",
+          elevated: "#2E2E30",
         },
         accent: {
-          green: "#00E5A0",
-          blue: "#0066FF",
-          orange: "#FF6B35",
-          purple: "#A855F7",
-          yellow: "#FFD166",
-          red: "#FF4567",
+          green: "#C9A84C",
+          blue: "#800020",
+          orange: "#C9A84C",
+          purple: "#800020",
+          yellow: "#C9A84C",
+          red: "#800020",
         },
         border: {
           subtle: "rgba(255,255,255,0.07)",

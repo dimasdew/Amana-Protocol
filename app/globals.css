@@ -16,8 +16,8 @@
   }
 
   body {
-    background-color: #0A0C10;
-    color: #F0F4FF;
+    background-color: #121012;
+    color: #F0ECE4;
     font-family: var(--font-syne), sans-serif;
   }
 
@@ -29,11 +29,11 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1C2433;
+    background: #2E2E30;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #2a3547;
+    background: #3A3A3C;
   }
 
   input[type="number"]::-webkit-inner-spin-button,
@@ -48,14 +48,14 @@
 
 @layer utilities {
   .text-gradient-green {
-    background: linear-gradient(135deg, #00E5A0, #00B37A);
+    background: linear-gradient(135deg, #C9A84C, #A8893D);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-blue {
-    background: linear-gradient(135deg, #0066FF, #0044BB);
+    background: linear-gradient(135deg, #800020, #600018);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -85,11 +85,11 @@
   }
 
   .glow-green {
-    box-shadow: 0 0 20px rgba(0, 229, 160, 0.15);
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.15);
   }
 
   .glow-blue {
-    box-shadow: 0 0 20px rgba(0, 102, 255, 0.15);
+    box-shadow: 0 0 20px rgba(128, 0, 32, 0.15);
   }
 
   .card-hover {

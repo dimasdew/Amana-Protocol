@@ -42,9 +42,9 @@ export default function LiquidityPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-[22px] font-extrabold">Liquidity Pools</h1>
-          <p className="text-[12px] text-[#4A5568] mt-1">Provide liquidity and earn fees from every swap</p>
+          <p className="text-[12px] text-[#A09080] mt-1">Provide liquidity and earn fees from every swap</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-[9px] bg-gradient-to-r from-[#00E5A0] to-[#00B37A] text-black rounded-lg text-[13px] font-bold hover:opacity-90 transition-opacity">
+        <button className="flex items-center gap-2 px-4 py-[9px] bg-gradient-to-r from-[#C9A84C] to-[#A8893D] text-black rounded-lg text-[13px] font-bold hover:opacity-90 transition-opacity">
           <Plus size={14} /> New Position
         </button>
       </div>
@@ -52,15 +52,15 @@ export default function LiquidityPage() {
       {/* My Positions */}
       <section>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-[13px] font-bold text-[#8892A4] uppercase tracking-[0.5px]">My LP Positions</h2>
-          <span className="text-[11px] text-[#4A5568] font-mono">Total Value: $42,840</span>
+          <h2 className="text-[13px] font-bold text-[#BBA890] uppercase tracking-[0.5px]">My LP Positions</h2>
+          <span className="text-[11px] text-[#A09080] font-mono">Total Value: $42,840</span>
         </div>
-        <div className="bg-[#0F1218] border border-white/[0.07] rounded-[14px] overflow-hidden">
+        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] overflow-hidden">
           <table className="w-full border-collapse">
             <thead>
               <tr>
                 {["Pool","Fee Tier","My Liquidity","Unclaimed Fees","Range","APR","Actions"].map((h) => (
-                  <th key={h} className="text-left text-[11px] font-bold text-[#4A5568] uppercase tracking-[0.8px] px-3 py-2 border-b border-white/[0.07]">{h}</th>
+                  <th key={h} className="text-left text-[11px] font-bold text-[#A09080] uppercase tracking-[0.8px] px-3 py-2 border-b border-white/[0.07]">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -76,24 +76,24 @@ export default function LiquidityPage() {
       {/* Top Pools */}
       <section>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-[13px] font-bold text-[#8892A4] uppercase tracking-[0.5px]">Top Pools by Volume</h2>
+          <h2 className="text-[13px] font-bold text-[#BBA890] uppercase tracking-[0.5px]">Top Pools by Volume</h2>
           <div className="flex gap-[2px]">
             {(["24H","7D","30D"] as Timeframe[]).map((tf) => (
               <button key={tf} onClick={() => setTimeframe(tf)}
                 className={cn("px-3 py-1 rounded-md text-[11px] font-bold font-mono transition-all",
-                  timeframe === tf ? "bg-[#1C2433] text-white border border-white/[0.12]" : "text-[#4A5568] hover:text-white"
+                  timeframe === tf ? "bg-[#2E2E30] text-white border border-white/[0.12]" : "text-[#A09080] hover:text-white"
                 )}>
                 {tf}
               </button>
             ))}
           </div>
         </div>
-        <div className="bg-[#0F1218] border border-white/[0.07] rounded-[14px] overflow-hidden">
+        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] overflow-hidden">
           <table className="w-full border-collapse">
             <thead>
               <tr>
                 {["#","Pool","TVL","Volume 24H","Fees 24H","APR",""].map((h) => (
-                  <th key={h} className="text-left text-[11px] font-bold text-[#4A5568] uppercase tracking-[0.8px] px-3 py-2 border-b border-white/[0.07]">{h}</th>
+                  <th key={h} className="text-left text-[11px] font-bold text-[#A09080] uppercase tracking-[0.8px] px-3 py-2 border-b border-white/[0.07]">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -115,43 +115,43 @@ function MyPositionRow({ position }: { position: typeof MY_POSITIONS[0] }) {
   const rangeProgress = Math.min(Math.max(((currentPrice - rangeMin) / (rangeMax - rangeMin)) * 100, 0), 100)
 
   return (
-    <tr className="group hover:bg-[#161B24] transition-colors">
+    <tr className="group hover:bg-[#252527] transition-colors">
       <td className="py-3 px-3">
         <div className="flex items-center gap-2">
           <TokenPair symbol0={pool.token0.symbol} symbol1={pool.token1.symbol} />
           <div>
             <p className="text-[13px] font-bold">{pool.token0.symbol} / {pool.token1.symbol}</p>
-            <p className="text-[10px] text-[#4A5568] font-mono">V3 Pool</p>
+            <p className="text-[10px] text-[#A09080] font-mono">V3 Pool</p>
           </div>
         </div>
       </td>
       <td className="py-3 px-3">
-        <span className="text-[11px] font-bold font-mono bg-[#00E5A0]/10 text-[#00E5A0] px-2 py-[2px] rounded-md">{feeTierToPercent(pool.feeTier)}</span>
+        <span className="text-[11px] font-bold font-mono bg-[#C9A84C]/10 text-[#C9A84C] px-2 py-[2px] rounded-md">{feeTierToPercent(pool.feeTier)}</span>
       </td>
       <td className="py-3 px-3">
         <p className="text-[13px] font-bold font-mono">{formatUSD(myLiquidity)}</p>
-        <p className="text-[10px] text-[#4A5568]">{token0Amount} + {token1Amount}</p>
+        <p className="text-[10px] text-[#A09080]">{token0Amount} + {token1Amount}</p>
       </td>
       <td className="py-3 px-3">
-        <span className="text-[13px] font-bold font-mono text-[#00E5A0]">{formatUSD(unclaimedFees)}</span>
+        <span className="text-[13px] font-bold font-mono text-[#C9A84C]">{formatUSD(unclaimedFees)}</span>
       </td>
       <td className="py-3 px-3">
-        <p className="text-[11px] font-mono text-[#8892A4]">${rangeMin.toLocaleString()} – ${rangeMax.toLocaleString()}</p>
-        <div className="h-[4px] bg-[#1C2433] rounded-full mt-1 w-24 overflow-hidden">
-          <div className="h-full bg-[#00E5A0] rounded-full" style={{ width: `${rangeProgress}%` }} />
+        <p className="text-[11px] font-mono text-[#BBA890]">${rangeMin.toLocaleString()} – ${rangeMax.toLocaleString()}</p>
+        <div className="h-[4px] bg-[#2E2E30] rounded-full mt-1 w-24 overflow-hidden">
+          <div className="h-full bg-[#C9A84C] rounded-full" style={{ width: `${rangeProgress}%` }} />
         </div>
-        <p className={cn("text-[9px] mt-1 font-mono font-bold", inRange ? "text-[#00E5A0]" : "text-[#FF4567]")}>
+        <p className={cn("text-[9px] mt-1 font-mono font-bold", inRange ? "text-[#C9A84C]" : "text-[#800020]")}>
           {inRange ? "In Range" : "Out of Range"}
         </p>
       </td>
       <td className="py-3 px-3">
-        <span className="text-[13px] font-bold font-mono text-[#00E5A0]">{apr}%</span>
+        <span className="text-[13px] font-bold font-mono text-[#C9A84C]">{apr}%</span>
       </td>
       <td className="py-3 px-3">
         <div className="flex gap-[6px]">
-          <button className="px-2 py-[5px] bg-[#00E5A0]/10 border border-[#00E5A0]/30 text-[#00E5A0] rounded-lg text-[11px] font-bold hover:bg-[#00E5A0]/20 transition-colors">Collect</button>
-          <button className="px-2 py-[5px] border border-white/[0.12] text-[#8892A4] rounded-lg text-[11px] font-bold hover:bg-[#1C2433] hover:text-white transition-all">Add</button>
-          <button className="px-2 py-[5px] border border-white/[0.12] text-[#8892A4] rounded-lg text-[11px] font-bold hover:bg-[#1C2433] hover:text-white transition-all">Remove</button>
+          <button className="px-2 py-[5px] bg-[#C9A84C]/10 border border-[#C9A84C]/30 text-[#C9A84C] rounded-lg text-[11px] font-bold hover:bg-[#C9A84C]/20 transition-colors">Collect</button>
+          <button className="px-2 py-[5px] border border-white/[0.12] text-[#BBA890] rounded-lg text-[11px] font-bold hover:bg-[#2E2E30] hover:text-white transition-all">Add</button>
+          <button className="px-2 py-[5px] border border-white/[0.12] text-[#BBA890] rounded-lg text-[11px] font-bold hover:bg-[#2E2E30] hover:text-white transition-all">Remove</button>
         </div>
       </td>
     </tr>

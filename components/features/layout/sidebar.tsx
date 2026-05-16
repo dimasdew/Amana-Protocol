@@ -19,33 +19,33 @@ const MAIN_ITEMS = [
     label: "Swap",
     href: "/",
     icon: ArrowLeftRight,
-    color: "text-[#00E5A0]",
-    bg: "bg-[#00E5A0]/10",
+    color: "text-[#C9A84C]",
+    bg: "bg-[#C9A84C]/10",
     badge: null,
   },
   {
     label: "Stake",
     href: "/stake",
     icon: Flame,
-    color: "text-[#0066FF]",
-    bg: "bg-[#0066FF]/10",
+    color: "text-[#800020]",
+    bg: "bg-[#800020]/10",
     badge: "APY 18%",
-    badgeColor: "bg-[#00E5A0]/10 text-[#00E5A0]",
+    badgeColor: "bg-[#C9A84C]/10 text-[#C9A84C]",
   },
   {
     label: "Lend / Borrow",
     href: "/lend",
     icon: Building2,
-    color: "text-[#FF6B35]",
-    bg: "bg-[#FF6B35]/10",
+    color: "text-[#C9A84C]",
+    bg: "bg-[#C9A84C]/10",
     badge: null,
   },
   {
     label: "Liquidity",
     href: "/liquidity",
     icon: Droplets,
-    color: "text-[#A855F7]",
-    bg: "bg-[#A855F7]/10",
+    color: "text-[#800020]",
+    bg: "bg-[#800020]/10",
     badge: null,
   },
 ]
@@ -55,15 +55,15 @@ const SECONDARY_ITEMS = [
     label: "Analytics",
     href: "/analytics",
     icon: BarChart3,
-    color: "text-[#FFD166]",
-    bg: "bg-[#FFD166]/10",
+    color: "text-[#C9A84C]",
+    bg: "bg-[#C9A84C]/10",
   },
   {
     label: "Transactions",
     href: "/transactions",
     icon: ListOrdered,
-    color: "text-[#0066FF]",
-    bg: "bg-[#0066FF]/10",
+    color: "text-[#800020]",
+    bg: "bg-[#800020]/10",
   },
 ]
 
@@ -72,15 +72,15 @@ const ACCOUNT_ITEMS = [
     label: "Portfolio",
     href: "/portfolio",
     icon: Wallet,
-    color: "text-[#00E5A0]",
-    bg: "bg-[#00E5A0]/10",
+    color: "text-[#C9A84C]",
+    bg: "bg-[#C9A84C]/10",
   },
   {
     label: "Settings",
     href: "/settings",
     icon: Settings,
-    color: "text-[#0066FF]",
-    bg: "bg-[#0066FF]/10",
+    color: "text-[#800020]",
+    bg: "bg-[#800020]/10",
   },
 ]
 
@@ -88,7 +88,7 @@ export function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="w-[220px] shrink-0 border-r border-white/[0.07] flex flex-col gap-1 p-3 overflow-y-auto bg-[#0A0C10]">
+    <aside className="w-[220px] shrink-0 border-r border-white/[0.07] flex flex-col gap-1 p-3 overflow-y-auto bg-[#121012]">
       <SidebarSection label="Explore" />
       {MAIN_ITEMS.map((item) => (
         <SidebarItem key={item.href} item={item} pathname={pathname} />
@@ -109,7 +109,7 @@ export function Sidebar() {
 
 function SidebarSection({ label }: { label: string }) {
   return (
-    <p className="text-[10px] font-bold text-[#4A5568] tracking-[1.2px] uppercase px-[10px] pt-3 pb-1 mt-2 first:mt-0">
+    <p className="text-[10px] font-bold text-[#A09080] tracking-[1.2px] uppercase px-[10px] pt-3 pb-1 mt-2 first:mt-0">
       {label}
     </p>
   )
@@ -132,8 +132,8 @@ function SidebarItem({
       className={cn(
         "flex items-center gap-[10px] px-[10px] py-2 rounded-lg text-[13px] font-semibold transition-all duration-150 group",
         isActive
-          ? "bg-[#161B24] text-white border border-white/[0.12]"
-          : "text-[#8892A4] hover:bg-[#161B24] hover:text-white"
+          ? "bg-[#252527] text-white border border-white/[0.12]"
+          : "text-[#BBA890] hover:bg-[#252527] hover:text-white"
       )}
     >
       <span

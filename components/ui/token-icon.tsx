@@ -34,8 +34,8 @@ export function TokenIcon({ symbol, size = "md", className, overlap }: TokenIcon
       className={cn(
         "rounded-full flex items-center justify-center font-bold shrink-0",
         SIZE_MAP[size],
-        TOKEN_COLORS[symbol] ?? "bg-[#1C2433] text-white",
-        overlap && "-ml-2 border-2 border-[#0F1218]",
+        TOKEN_COLORS[symbol] ?? "bg-[#2E2E30] text-white",
+        overlap && "-ml-2 border-2 border-[#1C1C1E]",
         className
       )}
     >

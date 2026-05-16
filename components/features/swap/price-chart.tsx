@@ -66,7 +66,7 @@ export function PriceChart() {
   const isPositive = priceChange >= 0
 
   return (
-    <div className="bg-[#0F1218] border border-white/[0.07] rounded-2xl p-[18px]">
+    <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-2xl p-[18px]">
       {/* Pair header */}
       <div className="flex items-center gap-3 mb-5">
         <TokenPair symbol0="ETH" symbol1="USDC" size="md" />
@@ -79,8 +79,8 @@ export function PriceChart() {
             className={cn(
               "text-[13px] font-semibold px-2 py-[3px] rounded-md font-mono",
               isPositive
-                ? "bg-[#00E5A0]/10 text-[#00E5A0]"
-                : "bg-[#FF4567]/10 text-[#FF4567]"
+                ? "bg-[#C9A84C]/10 text-[#C9A84C]"
+                : "bg-[#800020]/10 text-[#800020]"
             )}
           >
             {isPositive ? "+" : ""}
@@ -98,8 +98,8 @@ export function PriceChart() {
             className={cn(
               "px-[10px] py-1 rounded-md text-[11px] font-bold font-mono transition-all",
               timeframe === tf
-                ? "bg-[#1C2433] text-white border border-white/[0.12]"
-                : "text-[#4A5568] hover:text-white"
+                ? "bg-[#2E2E30] text-white border border-white/[0.12]"
+                : "text-[#A09080] hover:text-white"
             )}
           >
             {tf}
@@ -112,8 +112,8 @@ export function PriceChart() {
         <AreaChart data={chartData} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="priceGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#00E5A0" stopOpacity={0.15} />
-              <stop offset="95%" stopColor="#00E5A0" stopOpacity={0.01} />
+              <stop offset="5%" stopColor="#C9A84C" stopOpacity={0.15} />
+              <stop offset="95%" stopColor="#C9A84C" stopOpacity={0.01} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
@@ -128,7 +128,7 @@ export function PriceChart() {
           />
           <Tooltip
             contentStyle={{
-              background: "#1C2433",
+              background: "#2E2E30",
               border: "1px solid rgba(255,255,255,0.12)",
               borderRadius: "8px",
               fontFamily: "DM Mono",
@@ -140,11 +140,11 @@ export function PriceChart() {
           <Area
             type="monotone"
             dataKey="price"
-            stroke="#00E5A0"
+            stroke="#C9A84C"
             strokeWidth={1.5}
             fill="url(#priceGrad)"
             dot={false}
-            activeDot={{ r: 4, fill: "#00E5A0" }}
+            activeDot={{ r: 4, fill: "#C9A84C" }}
           />
         </AreaChart>
       </ResponsiveContainer>
@@ -154,7 +154,7 @@ export function PriceChart() {
         <BarChart data={chartData} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
           <Bar
             dataKey="volume"
-            fill="rgba(0,229,160,0.15)"
+            fill="rgba(201,168,76,0.15)"
             radius={[1, 1, 0, 0]}
           />
         </BarChart>
@@ -169,7 +169,7 @@ export function PriceChart() {
           { label: "Liquidity", value: PAIR_STATS.liquidity },
         ].map((stat) => (
           <div key={stat.label}>
-            <p className="text-[10px] text-[#4A5568] font-bold uppercase tracking-[0.7px]">
+            <p className="text-[10px] text-[#A09080] font-bold uppercase tracking-[0.7px]">
               {stat.label}
             </p>
             <p className="text-[13px] font-bold font-mono mt-[2px]">{stat.value}</p>

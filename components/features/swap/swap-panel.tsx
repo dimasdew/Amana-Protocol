@@ -62,33 +62,33 @@ export function SwapPanel() {
       : null
 
   return (
-    <div className="bg-[#0F1218] border border-white/[0.07] rounded-2xl overflow-hidden">
+    <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-2xl overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between px-[18px] py-[14px] border-b border-white/[0.07]">
-        <span className="text-[13px] font-bold text-[#8892A4] uppercase tracking-[0.5px]">
+        <span className="text-[13px] font-bold text-[#BBA890] uppercase tracking-[0.5px]">
           Swap Tokens
         </span>
         <div className="flex items-center gap-3">
-          <span className="text-[11px] text-[#4A5568] font-mono">Auto Router</span>
+          <span className="text-[11px] text-[#A09080] font-mono">Auto Router</span>
           <button
             onClick={toggleAutoRouter}
             className={cn(
               "w-8 h-4 rounded-full relative transition-colors duration-200",
-              autoRouter ? "bg-[#00E5A0]" : "bg-[#1C2433]"
+              autoRouter ? "bg-[#C9A84C]" : "bg-[#2E2E30]"
             )}
           >
             <span
               className={cn(
                 "absolute top-[2px] w-3 h-3 rounded-full transition-all duration-200",
-                autoRouter ? "left-[18px] bg-black" : "left-[2px] bg-[#4A5568]"
+                autoRouter ? "left-[18px] bg-black" : "left-[2px] bg-[#A09080]"
               )}
             />
           </button>
           <button
             onClick={() => setShowSettings(!showSettings)}
             className={cn(
-              "text-[#4A5568] hover:text-white transition-colors",
-              showSettings && "text-[#00E5A0]"
+              "text-[#A09080] hover:text-white transition-colors",
+              showSettings && "text-[#C9A84C]"
             )}
           >
             <Settings2 size={16} />
@@ -99,9 +99,9 @@ export function SwapPanel() {
       <div className="p-[18px]">
         {/* Settings panel */}
         {showSettings && (
-          <div className="bg-[#161B24] border border-white/[0.07] rounded-xl p-4 mb-4">
+          <div className="bg-[#252527] border border-white/[0.07] rounded-xl p-4 mb-4">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-bold text-[#8892A4] uppercase tracking-[0.7px]">
+              <span className="text-[11px] font-bold text-[#BBA890] uppercase tracking-[0.7px]">
                 Slippage Tolerance
               </span>
               <div className="flex gap-[6px]">
@@ -112,8 +112,8 @@ export function SwapPanel() {
                     className={cn(
                       "px-[10px] py-1 rounded-md text-[11px] font-bold font-mono border transition-all",
                       slippage === s
-                        ? "bg-[#1C2433] text-[#00E5A0] border-[#00E5A0]/50"
-                        : "bg-transparent text-[#8892A4] border-white/[0.07] hover:text-white"
+                        ? "bg-[#2E2E30] text-[#C9A84C] border-[#C9A84C]/50"
+                        : "bg-transparent text-[#BBA890] border-white/[0.07] hover:text-white"
                     )}
                   >
                     {s}%
@@ -122,10 +122,10 @@ export function SwapPanel() {
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold text-[#8892A4] uppercase tracking-[0.7px]">
+              <span className="text-[11px] font-bold text-[#BBA890] uppercase tracking-[0.7px]">
                 Tx Deadline
               </span>
-              <span className="text-[11px] font-mono text-[#8892A4]">20 mins</span>
+              <span className="text-[11px] font-mono text-[#BBA890]">20 mins</span>
             </div>
           </div>
         )}
@@ -146,7 +146,7 @@ export function SwapPanel() {
         <div className="flex justify-center my-[6px]">
           <button
             onClick={flipTokens}
-            className="w-8 h-8 bg-[#1C2433] border border-white/[0.12] rounded-lg flex items-center justify-center text-[#8892A4] hover:text-[#00E5A0] hover:border-[#00E5A0]/50 hover:rotate-180 transition-all duration-200"
+            className="w-8 h-8 bg-[#2E2E30] border border-white/[0.12] rounded-lg flex items-center justify-center text-[#BBA890] hover:text-[#C9A84C] hover:border-[#C9A84C]/50 hover:rotate-180 transition-all duration-200"
           >
             <ArrowUpDown size={14} />
           </button>
@@ -164,22 +164,22 @@ export function SwapPanel() {
         {/* Route */}
         {quote && (
           <div className="mt-3">
-            <p className="text-[11px] font-bold text-[#4A5568] uppercase tracking-[0.7px] mb-2">
+            <p className="text-[11px] font-bold text-[#A09080] uppercase tracking-[0.7px] mb-2">
               Best Route
             </p>
             <div className="flex items-center gap-[6px]">
               {quote.route.map((sym, i) => (
                 <div key={i} className="flex items-center gap-[6px]">
-                  <div className="flex items-center gap-[6px] bg-[#1C2433] border border-white/[0.07] rounded-md px-2 py-1 text-[11px] font-mono text-[#8892A4]">
+                  <div className="flex items-center gap-[6px] bg-[#2E2E30] border border-white/[0.07] rounded-md px-2 py-1 text-[11px] font-mono text-[#BBA890]">
                     <TokenIcon symbol={sym} size="xs" />
                     {sym}
                   </div>
                   {i < quote.route.length - 1 && (
-                    <span className="text-[#4A5568] text-xs">→</span>
+                    <span className="text-[#A09080] text-xs">→</span>
                   )}
                 </div>
               ))}
-              <span className="ml-auto text-[11px] font-bold text-[#00E5A0] bg-[#00E5A0]/10 px-2 py-[2px] rounded-md">
+              <span className="ml-auto text-[11px] font-bold text-[#C9A84C] bg-[#C9A84C]/10 px-2 py-[2px] rounded-md">
                 via Uniswap V3
               </span>
             </div>
@@ -188,12 +188,12 @@ export function SwapPanel() {
 
         {/* Quote info */}
         {quote && (
-          <div className="mt-3 bg-[#161B24] border border-white/[0.07] rounded-xl p-[10px] space-y-[6px]">
+          <div className="mt-3 bg-[#252527] border border-white/[0.07] rounded-xl p-[10px] space-y-[6px]">
             <InfoRow label="Exchange Rate">
               1 {fromToken.symbol} = {formatToken(fromToken.price! / toToken.price!)} {toToken.symbol}
             </InfoRow>
             <InfoRow label="Price Impact">
-              <span className={quote.priceImpact < 0.1 ? "text-[#00E5A0]" : "text-[#FFD166]"}>
+              <span className={quote.priceImpact < 0.1 ? "text-[#C9A84C]" : "text-[#C9A84C]"}>
                 {quote.priceImpact.toFixed(2)}%
               </span>
             </InfoRow>
@@ -214,8 +214,8 @@ export function SwapPanel() {
           className={cn(
             "w-full mt-4 py-[14px] rounded-[10px] text-[15px] font-bold tracking-[0.2px] transition-all duration-150",
             fromAmount && parseFloat(fromAmount) > 0
-              ? "bg-gradient-to-r from-[#00E5A0] to-[#00B37A] text-black hover:opacity-90 hover:-translate-y-[1px]"
-              : "bg-[#1C2433] text-[#4A5568] cursor-not-allowed"
+              ? "bg-gradient-to-r from-[#C9A84C] to-[#A8893D] text-black hover:opacity-90 hover:-translate-y-[1px]"
+              : "bg-[#2E2E30] text-[#A09080] cursor-not-allowed"
           )}
           disabled={!fromAmount || parseFloat(fromAmount) <= 0}
         >
@@ -248,15 +248,15 @@ function TokenInput({
   editable: boolean
 }) {
   return (
-    <div className="bg-[#161B24] border border-white/[0.07] hover:border-white/[0.12] rounded-xl p-4 transition-colors cursor-pointer">
+    <div className="bg-[#252527] border border-white/[0.07] hover:border-white/[0.12] rounded-xl p-4 transition-colors cursor-pointer">
       <div className="flex justify-between mb-2">
-        <span className="text-[11.5px] font-semibold text-[#8892A4]">{label}</span>
+        <span className="text-[11.5px] font-semibold text-[#BBA890]">{label}</span>
         {balance !== undefined && (
-          <span className="text-[11.5px] text-[#4A5568] font-mono">
+          <span className="text-[11.5px] text-[#A09080] font-mono">
             Balance: {formatToken(balance)}{" "}
             <button
               onClick={onMax}
-              className="text-[#0066FF] hover:text-[#4499FF] transition-colors"
+              className="text-[#800020] hover:text-[#4499FF] transition-colors"
             >
               MAX
             </button>
@@ -264,10 +264,10 @@ function TokenInput({
         )}
       </div>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 bg-[#1C2433] border border-white/[0.12] rounded-lg px-3 py-[7px] cursor-pointer hover:border-[#00E5A0]/50 transition-colors">
+        <div className="flex items-center gap-2 bg-[#2E2E30] border border-white/[0.12] rounded-lg px-3 py-[7px] cursor-pointer hover:border-[#C9A84C]/50 transition-colors">
           <TokenIcon symbol={token.symbol} size="sm" />
           <span className="text-[14px] font-bold">{token.symbol}</span>
-          <span className="text-[10px] text-[#4A5568]">▼</span>
+          <span className="text-[10px] text-[#A09080]">▼</span>
         </div>
         <div className="text-right">
           {editable ? (
@@ -277,7 +277,7 @@ function TokenInput({
               value={amount}
               onChange={onChange}
               placeholder="0.00"
-              className="text-[28px] font-bold font-mono bg-transparent text-right w-[150px] outline-none text-white placeholder:text-[#4A5568]"
+              className="text-[28px] font-bold font-mono bg-transparent text-right w-[150px] outline-none text-white placeholder:text-[#A09080]"
             />
           ) : (
             <div className="text-[28px] font-bold font-mono text-right w-[150px] text-white">
@@ -285,7 +285,7 @@ function TokenInput({
             </div>
           )}
           {valueUSD && (
-            <div className="text-[11px] text-[#4A5568] font-mono mt-[2px]">
+            <div className="text-[11px] text-[#A09080] font-mono mt-[2px]">
               ≈ {valueUSD}
             </div>
           )}
@@ -304,8 +304,8 @@ function InfoRow({
 }) {
   return (
     <div className="flex justify-between items-center text-[12px]">
-      <span className="text-[#4A5568]">{label}</span>
-      <span className="text-[#8892A4] font-mono">{children}</span>
+      <span className="text-[#A09080]">{label}</span>
+      <span className="text-[#BBA890] font-mono">{children}</span>
     </div>
   )
 }
