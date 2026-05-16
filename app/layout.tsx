@@ -33,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${syne.variable} ${dmMono.variable} font-sans bg-bg-primary text-white antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${syne.variable} ${dmMono.variable} font-sans antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -12,11 +12,11 @@ export function StatCard({ label, value, sub, subPositive, className }: StatCard
   return (
     <div
       className={cn(
-        "bg-[#1C1C1E] border border-white/[0.07] rounded-[10px] px-4 py-3",
+        "bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] px-4 py-3 transition-colors",
         className
       )}
     >
-      <p className="text-[11px] font-bold text-[#A09080] uppercase tracking-[0.8px] mb-1">
+      <p className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.8px] mb-1">
         {label}
       </p>
       <p className="text-[18px] font-bold font-mono">{value}</p>
@@ -25,10 +25,10 @@ export function StatCard({ label, value, sub, subPositive, className }: StatCard
           className={cn(
             "text-[11px] font-mono mt-[2px]",
             subPositive === true
-              ? "text-[#C9A84C]"
+              ? "text-[var(--color-accent-gold)]"
               : subPositive === false
-              ? "text-[#800020]"
-              : "text-[#A09080]"
+              ? "text-[var(--color-accent-maroon)]"
+              : "text-[var(--color-text-muted)]"
           )}
         >
           {sub}

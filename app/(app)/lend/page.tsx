@@ -11,19 +11,19 @@ export default function LendPage() {
     <div className="space-y-4">
       <div>
         <h1 className="text-[22px] font-extrabold">Lending Markets</h1>
-        <p className="text-[12px] text-[#A09080] mt-1">Supply assets to earn interest or borrow against your collateral</p>
+        <p className="text-[12px] text-[var(--color-text-muted)] mt-1">Supply assets to earn interest or borrow against your collateral</p>
       </div>
       <div className="grid grid-cols-1 xl:grid-cols-[1fr_340px] gap-4 items-start">
         <div className="space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] p-4">
-              <h2 className="text-[11px] font-bold text-[#A09080] uppercase tracking-[1px] mb-3">Supply Markets</h2>
+            <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 transition-colors">
+              <h2 className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[1px] mb-3">Supply Markets</h2>
               {MOCK_LEND_ASSETS.map((asset) => (
                 <LendAssetRow key={asset.token.symbol} asset={asset} mode="supply" />
               ))}
             </div>
-            <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] p-4">
-              <h2 className="text-[11px] font-bold text-[#A09080] uppercase tracking-[1px] mb-3">Borrow Markets</h2>
+            <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 transition-colors">
+              <h2 className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[1px] mb-3">Borrow Markets</h2>
               {MOCK_LEND_ASSETS.map((asset) => (
                 <LendAssetRow key={asset.token.symbol} asset={asset} mode="borrow" />
               ))}
@@ -35,10 +35,10 @@ export default function LendPage() {
               { label: "Total Borrowed", value: "$3.1B", sub: "37.8% utilization" },
               { label: "Avg Supply APY", value: "6.46%", sub: "Across all assets", pos: true },
             ].map((s) => (
-              <div key={s.label} className="bg-[#1C1C1E] border border-white/[0.07] rounded-xl p-4">
-                <p className="text-[11px] font-bold text-[#A09080] uppercase tracking-[0.8px]">{s.label}</p>
+              <div key={s.label} className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-xl p-4 transition-colors">
+                <p className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.8px]">{s.label}</p>
                 <p className="text-[20px] font-bold font-mono mt-1">{s.value}</p>
-                <p className={`text-[11px] font-mono mt-1 ${s.pos ? "text-[#C9A84C]" : "text-[#A09080]"}`}>{s.sub}</p>
+                <p className={`text-[11px] font-mono mt-1 ${s.pos ? "text-[var(--color-accent-gold)]" : "text-[var(--color-text-muted)]"}`}>{s.sub}</p>
               </div>
             ))}
           </div>

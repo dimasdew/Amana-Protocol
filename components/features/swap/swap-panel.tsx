@@ -62,33 +62,33 @@ export function SwapPanel() {
       : null
 
   return (
-    <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-2xl overflow-hidden">
+    <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl overflow-hidden transition-colors">
       {/* Header */}
-      <div className="flex items-center justify-between px-[18px] py-[14px] border-b border-white/[0.07]">
-        <span className="text-[13px] font-bold text-[#BBA890] uppercase tracking-[0.5px]">
+      <div className="flex items-center justify-between px-[18px] py-[14px] border-b border-[var(--color-border-subtle)]">
+        <span className="text-[13px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.5px]">
           Swap Tokens
         </span>
         <div className="flex items-center gap-3">
-          <span className="text-[11px] text-[#A09080] font-mono">Auto Router</span>
+          <span className="text-[11px] text-[var(--color-text-muted)] font-mono">Auto Router</span>
           <button
             onClick={toggleAutoRouter}
             className={cn(
               "w-8 h-4 rounded-full relative transition-colors duration-200",
-              autoRouter ? "bg-[#C9A84C]" : "bg-[#2E2E30]"
+              autoRouter ? "bg-[var(--color-accent-gold)]" : "bg-[var(--color-bg-elevated)]"
             )}
           >
             <span
               className={cn(
                 "absolute top-[2px] w-3 h-3 rounded-full transition-all duration-200",
-                autoRouter ? "left-[18px] bg-black" : "left-[2px] bg-[#A09080]"
+                autoRouter ? "left-[18px] bg-black" : "left-[2px] bg-[var(--color-text-muted)]"
               )}
             />
           </button>
           <button
             onClick={() => setShowSettings(!showSettings)}
             className={cn(
-              "text-[#A09080] hover:text-white transition-colors",
-              showSettings && "text-[#C9A84C]"
+              "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors",
+              showSettings && "text-[var(--color-accent-gold)]"
             )}
           >
             <Settings2 size={16} />
@@ -99,9 +99,9 @@ export function SwapPanel() {
       <div className="p-[18px]">
         {/* Settings panel */}
         {showSettings && (
-          <div className="bg-[#252527] border border-white/[0.07] rounded-xl p-4 mb-4">
+          <div className="bg-[var(--color-bg-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-4 mb-4">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-bold text-[#BBA890] uppercase tracking-[0.7px]">
+              <span className="text-[11px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.7px]">
                 Slippage Tolerance
               </span>
               <div className="flex gap-[6px]">
@@ -112,8 +112,8 @@ export function SwapPanel() {
                     className={cn(
                       "px-[10px] py-1 rounded-md text-[11px] font-bold font-mono border transition-all",
                       slippage === s
-                        ? "bg-[#2E2E30] text-[#C9A84C] border-[#C9A84C]/50"
-                        : "bg-transparent text-[#BBA890] border-white/[0.07] hover:text-white"
+                        ? "bg-[var(--color-bg-elevated)] text-[var(--color-accent-gold)] border-[var(--color-accent-gold)]/50"
+                        : "bg-transparent text-[var(--color-text-secondary)] border-[var(--color-border-subtle)] hover:text-[var(--color-text-primary)]"
                     )}
                   >
                     {s}%
@@ -122,10 +122,10 @@ export function SwapPanel() {
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold text-[#BBA890] uppercase tracking-[0.7px]">
+              <span className="text-[11px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.7px]">
                 Tx Deadline
               </span>
-              <span className="text-[11px] font-mono text-[#BBA890]">20 mins</span>
+              <span className="text-[11px] font-mono text-[var(--color-text-secondary)]">20 mins</span>
             </div>
           </div>
         )}
@@ -146,7 +146,7 @@ export function SwapPanel() {
         <div className="flex justify-center my-[6px]">
           <button
             onClick={flipTokens}
-            className="w-8 h-8 bg-[#2E2E30] border border-white/[0.12] rounded-lg flex items-center justify-center text-[#BBA890] hover:text-[#C9A84C] hover:border-[#C9A84C]/50 hover:rotate-180 transition-all duration-200"
+            className="w-8 h-8 bg-[var(--color-bg-elevated)] border border-[var(--color-border-default)] rounded-lg flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-accent-gold)] hover:border-[var(--color-accent-gold)]/50 hover:rotate-180 transition-all duration-200"
           >
             <ArrowUpDown size={14} />
           </button>
@@ -170,16 +170,16 @@ export function SwapPanel() {
             <div className="flex items-center gap-[6px]">
               {quote.route.map((sym, i) => (
                 <div key={i} className="flex items-center gap-[6px]">
-                  <div className="flex items-center gap-[6px] bg-[#2E2E30] border border-white/[0.07] rounded-md px-2 py-1 text-[11px] font-mono text-[#BBA890]">
+                  <div className="flex items-center gap-[6px] bg-[var(--color-bg-elevated)] border border-[var(--color-border-subtle)] rounded-md px-2 py-1 text-[11px] font-mono text-[var(--color-text-secondary)]">
                     <TokenIcon symbol={sym} size="xs" />
                     {sym}
                   </div>
                   {i < quote.route.length - 1 && (
-                    <span className="text-[#A09080] text-xs">→</span>
+                    <span className="text-[var(--color-text-muted)] text-xs">→</span>
                   )}
                 </div>
               ))}
-              <span className="ml-auto text-[11px] font-bold text-[#C9A84C] bg-[#C9A84C]/10 px-2 py-[2px] rounded-md">
+              <span className="ml-auto text-[11px] font-bold text-[var(--color-accent-gold)] bg-[var(--color-accent-gold)]/10 px-2 py-[2px] rounded-md">
                 via Uniswap V3
               </span>
             </div>
@@ -188,7 +188,7 @@ export function SwapPanel() {
 
         {/* Quote info */}
         {quote && (
-          <div className="mt-3 bg-[#252527] border border-white/[0.07] rounded-xl p-[10px] space-y-[6px]">
+          <div className="mt-3 bg-[var(--color-bg-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-[10px] space-y-[6px]">
             <InfoRow label="Exchange Rate">
               1 {fromToken.symbol} = {formatToken(fromToken.price! / toToken.price!)} {toToken.symbol}
             </InfoRow>
@@ -214,8 +214,8 @@ export function SwapPanel() {
           className={cn(
             "w-full mt-4 py-[14px] rounded-[10px] text-[15px] font-bold tracking-[0.2px] transition-all duration-150",
             fromAmount && parseFloat(fromAmount) > 0
-              ? "bg-gradient-to-r from-[#C9A84C] to-[#A8893D] text-black hover:opacity-90 hover:-translate-y-[1px]"
-              : "bg-[#2E2E30] text-[#A09080] cursor-not-allowed"
+              ? "bg-gradient-to-r from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] text-black hover:opacity-90 hover:-translate-y-[1px]"
+              : "bg-[var(--color-bg-elevated)] text-[var(--color-text-muted)] cursor-not-allowed"
           )}
           disabled={!fromAmount || parseFloat(fromAmount) <= 0}
         >
@@ -248,15 +248,15 @@ function TokenInput({
   editable: boolean
 }) {
   return (
-    <div className="bg-[#252527] border border-white/[0.07] hover:border-white/[0.12] rounded-xl p-4 transition-colors cursor-pointer">
+    <div className="bg-[var(--color-bg-tertiary)] border border-[var(--color-border-subtle)] hover:border-[var(--color-border-default)] rounded-xl p-4 transition-colors cursor-pointer">
       <div className="flex justify-between mb-2">
-        <span className="text-[11.5px] font-semibold text-[#BBA890]">{label}</span>
+        <span className="text-[11.5px] font-semibold text-[var(--color-text-secondary)]">{label}</span>
         {balance !== undefined && (
-          <span className="text-[11.5px] text-[#A09080] font-mono">
+          <span className="text-[11.5px] text-[var(--color-text-muted)] font-mono">
             Balance: {formatToken(balance)}{" "}
             <button
               onClick={onMax}
-              className="text-[#C9A84C] hover:text-white font-bold transition-colors"
+              className="text-[var(--color-accent-gold)] hover:text-[var(--color-text-primary)] font-bold transition-colors"
             >
               MAX
             </button>
@@ -264,10 +264,10 @@ function TokenInput({
         )}
       </div>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 bg-[#2E2E30] border border-white/[0.12] rounded-lg px-3 py-[7px] cursor-pointer hover:border-[#C9A84C]/50 transition-colors">
+        <div className="flex items-center gap-2 bg-[var(--color-bg-elevated)] border border-[var(--color-border-default)] rounded-lg px-3 py-[7px] cursor-pointer hover:border-[var(--color-accent-gold)]/50 transition-colors">
           <TokenIcon symbol={token.symbol} size="sm" />
           <span className="text-[14px] font-bold">{token.symbol}</span>
-          <span className="text-[10px] text-[#A09080]">▼</span>
+          <span className="text-[10px] text-[var(--color-text-muted)]">▼</span>
         </div>
         <div className="text-right">
           {editable ? (
@@ -277,15 +277,15 @@ function TokenInput({
               value={amount}
               onChange={onChange}
               placeholder="0.00"
-              className="text-[28px] font-bold font-mono bg-transparent text-right w-[150px] outline-none text-white placeholder:text-[#A09080]"
+              className="text-[28px] font-bold font-mono bg-transparent text-right w-[150px] outline-none text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)]"
             />
           ) : (
-            <div className="text-[28px] font-bold font-mono text-right w-[150px] text-white">
+            <div className="text-[28px] font-bold font-mono text-right w-[150px] text-[var(--color-text-primary)]">
               {amount || "0.00"}
             </div>
           )}
           {valueUSD && (
-            <div className="text-[11px] text-[#A09080] font-mono mt-[2px]">
+            <div className="text-[11px] text-[var(--color-text-muted)] font-mono mt-[2px]">
               ≈ {valueUSD}
             </div>
           )}
@@ -304,8 +304,8 @@ function InfoRow({
 }) {
   return (
     <div className="flex justify-between items-center text-[12px]">
-      <span className="text-[#A09080]">{label}</span>
-      <span className="text-[#BBA890] font-mono">{children}</span>
+      <span className="text-[var(--color-text-muted)]">{label}</span>
+      <span className="text-[var(--color-text-secondary)] font-mono">{children}</span>
     </div>
   )
 }

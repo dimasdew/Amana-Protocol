@@ -27,15 +27,15 @@ const GAS = [
 
 export function RightPanel() {
   return (
-    <aside className="hidden xl:flex w-[260px] shrink-0 border-l border-white/[0.07] bg-[#121012] overflow-y-auto flex-col gap-5 p-4">
+    <aside className="hidden xl:flex w-[260px] shrink-0 border-l border-[var(--color-border-subtle)] bg-[var(--color-bg-primary)] overflow-y-auto flex-col gap-5 p-4 transition-colors">
       {/* Gas */}
       <section>
         <SectionTitle>Gas Tracker</SectionTitle>
-        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[10px] p-3">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] p-3">
           <div className="flex justify-between mb-3">
             {GAS.map((g) => (
               <div key={g.label}>
-                <div className="text-[10px] text-[#A09080] mb-1">{g.label}</div>
+                <div className="text-[10px] text-[var(--color-text-muted)] mb-1">{g.label}</div>
                 <div className={cn("text-[13px] font-bold font-mono", g.color)}>
                   {g.gwei} gwei
                 </div>
@@ -60,16 +60,16 @@ export function RightPanel() {
       {/* Portfolio */}
       <section>
         <SectionTitle>Portfolio</SectionTitle>
-        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[10px] px-3 py-3 mb-2">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] px-3 py-3 mb-2">
           <div className="flex items-center justify-between">
-            <div className="text-[10px] text-[#A09080] uppercase tracking-wider">Total Value</div>
-            <div className="flex items-center gap-1 text-[#C9A84C]">
+            <div className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider">Total Value</div>
+            <div className="flex items-center gap-1 text-[var(--color-accent-gold)]">
               <ArrowUpRight size={10} />
               <span className="text-[10px] font-mono font-bold">+2.4%</span>
             </div>
           </div>
           <div className="text-[22px] font-bold font-mono mt-1">$51,704</div>
-          <div className="text-[11px] text-[#A09080] font-mono mt-[2px]">
+          <div className="text-[11px] text-[var(--color-text-muted)] font-mono mt-[2px]">
             +$1,204.30 today
           </div>
         </div>
@@ -79,7 +79,7 @@ export function RightPanel() {
               <TokenIcon symbol={item.token.symbol} />
               <div className="flex-1 min-w-0">
                 <div className="text-[12.5px] font-bold">{item.token.name}</div>
-                <div className="text-[11px] text-[#A09080] font-mono truncate">
+                <div className="text-[11px] text-[var(--color-text-muted)] font-mono truncate">
                   {item.amount} {item.token.symbol}
                 </div>
               </div>
@@ -91,10 +91,10 @@ export function RightPanel() {
                   className={cn(
                     "text-[10px] font-mono",
                     item.change > 0
-                      ? "text-[#C9A84C]"
+                      ? "text-[var(--color-accent-gold)]"
                       : item.change < 0
-                      ? "text-[#800020]"
-                      : "text-[#A09080]"
+                      ? "text-[var(--color-accent-maroon)]"
+                      : "text-[var(--color-text-muted)]"
                   )}
                 >
                   {item.change === 0
@@ -114,16 +114,16 @@ export function RightPanel() {
           {ACTIVITY.map((item, i) => (
             <div
               key={i}
-              className="flex items-center gap-[10px] px-[10px] py-2 bg-[#1C1C1E] border border-white/[0.07] rounded-[9px]"
+              className="flex items-center gap-[10px] px-[10px] py-2 bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[9px]"
             >
               <span className={cn("w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-bold shrink-0", item.color)}>
                 {item.icon}
               </span>
               <div className="flex-1 min-w-0">
                 <div className="text-[11.5px] font-bold">{item.type}</div>
-                <div className="text-[10.5px] text-[#A09080] font-mono truncate">{item.detail}</div>
+                <div className="text-[10.5px] text-[var(--color-text-muted)] font-mono truncate">{item.detail}</div>
               </div>
-              <div className="text-[10px] text-[#A09080] font-mono shrink-0">{item.time}</div>
+              <div className="text-[10px] text-[var(--color-text-muted)] font-mono shrink-0">{item.time}</div>
             </div>
           ))}
         </div>
@@ -134,7 +134,7 @@ export function RightPanel() {
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-[11px] font-bold text-[#A09080] uppercase tracking-[1px] mb-2">
+    <h3 className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[1px] mb-2">
       {children}
     </h3>
   )
@@ -154,7 +154,7 @@ function TokenIcon({ symbol }: { symbol: string }) {
     <div
       className={cn(
         "w-[26px] h-[26px] rounded-full flex items-center justify-center text-[10px] font-bold shrink-0",
-        TOKEN_COLORS[symbol] ?? "bg-[#2E2E30] text-white"
+        TOKEN_COLORS[symbol] ?? "bg-[var(--color-bg-elevated)] text-[var(--color-text-primary)]"
       )}
     >
       {symbol.slice(0, 1)}

@@ -101,7 +101,7 @@ export function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="hidden lg:flex w-[220px] shrink-0 border-r border-white/[0.07] flex-col p-3 overflow-y-auto bg-[#121012]">
+    <aside className="hidden lg:flex w-[220px] shrink-0 border-r border-[var(--color-border-subtle)] flex-col p-3 overflow-y-auto bg-[var(--color-bg-primary)] transition-colors">
       <SidebarSection label="Trade" />
       <div className="flex flex-col gap-[2px]">
         {MAIN_ITEMS.map((item) => (
@@ -125,11 +125,11 @@ export function Sidebar() {
 
       {/* Protocol badge */}
       <div className="mt-auto pt-4">
-        <div className="flex items-center gap-2 px-[10px] py-[10px] bg-[#1C1C1E] border border-white/[0.05] rounded-lg">
-          <Shield size={12} className="text-[#C9A84C]" />
+        <div className="flex items-center gap-2 px-[10px] py-[10px] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-lg">
+          <Shield size={12} className="text-[var(--color-accent-gold)]" />
           <div>
-            <p className="text-[10px] font-bold text-[#BBA890]">Amana Protocol</p>
-            <p className="text-[9px] text-[#A09080] font-mono">v1.0.0 · Mainnet</p>
+            <p className="text-[10px] font-bold text-[var(--color-text-secondary)]">Amana Protocol</p>
+            <p className="text-[9px] text-[var(--color-text-muted)] font-mono">v1.0.0 · Mainnet</p>
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@ export function Sidebar() {
 
 function SidebarSection({ label }: { label: string }) {
   return (
-    <p className="text-[10px] font-bold text-[#A09080] tracking-[1.2px] uppercase px-[10px] pt-3 pb-1 mt-2 first:mt-0">
+    <p className="text-[10px] font-bold text-[var(--color-text-muted)] tracking-[1.2px] uppercase px-[10px] pt-3 pb-1 mt-2 first:mt-0">
       {label}
     </p>
   )
@@ -162,23 +162,23 @@ function SidebarItem({
       className={cn(
         "flex items-center gap-[10px] px-[10px] py-[9px] rounded-lg transition-all duration-150 group",
         isActive
-          ? "bg-[#1C1C1E] border border-[#C9A84C]/20"
-          : "border border-transparent hover:bg-[#1C1C1E]/60 hover:border-white/[0.05]"
+          ? "bg-[var(--color-bg-secondary)] border border-[var(--color-accent-gold)]/20"
+          : "border border-transparent hover:bg-[var(--color-bg-secondary)]/60 hover:border-[var(--color-border-subtle)]"
       )}
     >
       <span
         className={cn(
           "w-7 h-7 rounded-[7px] flex items-center justify-center shrink-0 transition-colors",
-          isActive ? "bg-[#C9A84C]/15 text-[#C9A84C]" : cn(item.bg, item.color)
+          isActive ? "bg-[var(--color-accent-gold)]/15 text-[var(--color-accent-gold)]" : cn(item.bg, item.color)
         )}
       >
         <Icon size={14} />
       </span>
       <div className="flex-1 min-w-0">
-        <span className={cn("text-[13px] font-semibold block truncate", isActive ? "text-white" : "text-[#BBA890] group-hover:text-white")}>
+        <span className={cn("text-[13px] font-semibold block truncate", isActive ? "text-[var(--color-text-primary)]" : "text-[var(--color-text-secondary)] group-hover:text-[var(--color-text-primary)]")}>
           {item.label}
         </span>
-        <span className="text-[10px] text-[#A09080] truncate block">{item.desc}</span>
+        <span className="text-[10px] text-[var(--color-text-muted)] truncate block">{item.desc}</span>
       </div>
       {"badge" in item && item.badge && (
         <span

@@ -42,9 +42,9 @@ export default function LiquidityPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h1 className="text-[22px] font-extrabold">Liquidity Pools</h1>
-          <p className="text-[12px] text-[#A09080] mt-1">Provide liquidity and earn fees from every swap</p>
+          <p className="text-[12px] text-[var(--color-text-muted)] mt-1">Provide liquidity and earn fees from every swap</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-[9px] bg-gradient-to-r from-[#C9A84C] to-[#A8893D] text-black rounded-lg text-[13px] font-bold hover:opacity-90 transition-opacity">
+        <button className="flex items-center gap-2 px-4 py-[9px] bg-gradient-to-r from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] text-black rounded-lg text-[13px] font-bold hover:opacity-90 transition-opacity">
           <Plus size={14} /> New Position
         </button>
       </div>
@@ -52,15 +52,15 @@ export default function LiquidityPage() {
       {/* My Positions */}
       <section>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-[13px] font-bold text-[#BBA890] uppercase tracking-[0.5px]">My LP Positions</h2>
-          <span className="text-[11px] text-[#A09080] font-mono">Total Value: $42,840</span>
+          <h2 className="text-[13px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.5px]">My LP Positions</h2>
+          <span className="text-[11px] text-[var(--color-text-muted)] font-mono">Total Value: $42,840</span>
         </div>
-        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] overflow-x-auto">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] overflow-x-auto transition-colors">
           <table className="w-full border-collapse min-w-[700px]">
             <thead>
               <tr>
                 {["Pool","Fee Tier","My Liquidity","Unclaimed Fees","Range","APR","Actions"].map((h) => (
-                  <th key={h} className="text-left text-[11px] font-bold text-[#A09080] uppercase tracking-[0.8px] px-3 py-2 border-b border-white/[0.07]">{h}</th>
+                  <th key={h} className="text-left text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.8px] px-3 py-2 border-b border-[var(--color-border-subtle)]">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -76,24 +76,24 @@ export default function LiquidityPage() {
       {/* Top Pools */}
       <section>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-[13px] font-bold text-[#BBA890] uppercase tracking-[0.5px]">Top Pools by Volume</h2>
+          <h2 className="text-[13px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.5px]">Top Pools by Volume</h2>
           <div className="flex gap-[2px]">
             {(["24H","7D","30D"] as Timeframe[]).map((tf) => (
               <button key={tf} onClick={() => setTimeframe(tf)}
                 className={cn("px-3 py-1 rounded-md text-[11px] font-bold font-mono transition-all",
-                  timeframe === tf ? "bg-[#2E2E30] text-white border border-white/[0.12]" : "text-[#A09080] hover:text-white"
+                  timeframe === tf ? "bg-[var(--color-bg-elevated)] text-[var(--color-text-primary)] border border-[var(--color-border-default)]" : "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
                 )}>
                 {tf}
               </button>
             ))}
           </div>
         </div>
-        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] overflow-x-auto">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] overflow-x-auto transition-colors">
           <table className="w-full border-collapse min-w-[650px]">
             <thead>
               <tr>
                 {["#","Pool","TVL","Volume 24H","Fees 24H","APR",""].map((h) => (
-                  <th key={h} className="text-left text-[11px] font-bold text-[#A09080] uppercase tracking-[0.8px] px-3 py-2 border-b border-white/[0.07]">{h}</th>
+                  <th key={h} className="text-left text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.8px] px-3 py-2 border-b border-[var(--color-border-subtle)]">{h}</th>
                 ))}
               </tr>
             </thead>
