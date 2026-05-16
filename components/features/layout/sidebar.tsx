@@ -57,6 +57,7 @@ const SECONDARY_ITEMS = [
     icon: BarChart3,
     color: "text-[#C9A84C]",
     bg: "bg-[#C9A84C]/10",
+    badge: null,
   },
   {
     label: "Transactions",
@@ -64,6 +65,7 @@ const SECONDARY_ITEMS = [
     icon: ListOrdered,
     color: "text-[#800020]",
     bg: "bg-[#800020]/10",
+    badge: null,
   },
 ]
 
@@ -74,6 +76,7 @@ const ACCOUNT_ITEMS = [
     icon: Wallet,
     color: "text-[#C9A84C]",
     bg: "bg-[#C9A84C]/10",
+    badge: null,
   },
   {
     label: "Settings",
@@ -81,6 +84,7 @@ const ACCOUNT_ITEMS = [
     icon: Settings,
     color: "text-[#800020]",
     bg: "bg-[#800020]/10",
+    badge: null,
   },
 ]
 
