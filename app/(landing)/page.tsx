@@ -47,7 +47,7 @@ export default function LandingPage() {
           <a href="#stack" className="nav-link">Tech Stack</a>
           <a href="#" className="nav-link">Docs</a>
         </div>
-        <Link href="/app" className="nav-cta">Launch App →</Link>
+        <Link href="/dex" className="nav-cta">Launch App →</Link>
       </nav>
 
       {/* ── Hero ── */}
@@ -62,7 +62,7 @@ export default function LandingPage() {
           liquidity with <strong>zero custody risk</strong> and maximum transparency.
         </p>
         <div className="hero-actions">
-          <Link href="/app" className="btn-primary">
+          <Link href="/dex" className="btn-primary">
             Launch App
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -287,7 +287,7 @@ export default function LandingPage() {
           <h2 className="cta-title">Start trading<br /><span style={{ color: "var(--green)" }}>on-chain.</span></h2>
           <p className="cta-sub">No accounts. No KYC. No custody. Just connect your wallet and go.</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/app" className="btn-primary" style={{ fontSize: 16, padding: "16px 36px" }}>
+            <Link href="/dex" className="btn-primary" style={{ fontSize: 16, padding: "16px 36px" }}>
               Launch Amana
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -311,7 +311,7 @@ export default function LandingPage() {
               <p>The most powerful decentralized exchange. Built for serious DeFi participants.</p>
             </div>
             <div className="footer-cols">
-              <div className="footer-col"><h4>Product</h4><Link href="/app">Swap</Link><Link href="/app/stake">Stake</Link><Link href="/app/lend">Lend / Borrow</Link><Link href="/app/liquidity">Liquidity</Link></div>
+              <div className="footer-col"><h4>Product</h4><Link href="/dex">Swap</Link><Link href="/dex/stake">Stake</Link><Link href="/dex/lend">Lend / Borrow</Link><Link href="/dex/liquidity">Liquidity</Link></div>
               <div className="footer-col"><h4>Developers</h4><a href="#">Documentation</a><a href="#">GitHub</a><a href="#">Smart Contracts</a><a href="#">Bug Bounty</a></div>
               <div className="footer-col"><h4>Community</h4><a href="#">Twitter / X</a><a href="#">Discord</a><a href="#">Telegram</a><a href="#">Blog</a></div>
             </div>
