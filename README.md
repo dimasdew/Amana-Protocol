@@ -1,8 +1,8 @@
-# ⬡ NexDEX — Decentralized Exchange
+# ⬡ Amana — Decentralized Exchange
 
 A full-featured DEX (Decentralized Exchange) frontend built with Next.js 14, wagmi v2, and RainbowKit. Designed as a professional-grade Web3 portfolio project.
 
-![NexDEX Preview](https://img.shields.io/badge/Next.js-14-black?logo=next.js) ![wagmi](https://img.shields.io/badge/wagmi-v2-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript) ![Tailwind](https://img.shields.io/badge/Tailwind-3-06B6D4?logo=tailwindcss)
+![Amana Preview](https://img.shields.io/badge/Next.js-14-black?logo=next.js) ![wagmi](https://img.shields.io/badge/wagmi-v2-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript) ![Tailwind](https://img.shields.io/badge/Tailwind-3-06B6D4?logo=tailwindcss)
 
 ---
 
@@ -73,8 +73,8 @@ A full-featured DEX (Decentralized Exchange) frontend built with Next.js 14, wag
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/nexdex.git
-cd nexdex
+git clone https://github.com/dimasdew/Amana-Protocol.git
+cd Amana-Protocol
 
 # Install dependencies
 npm install
@@ -106,7 +106,7 @@ npm run start
 ## 📁 Project Structure
 
 ```
-nexdex/
+amana-protocol/
 ├── app/
 │   ├── (app)/               # Route group — main app shell
 │   │   ├── layout.tsx       # Navbar + Sidebar + TickerBar + RightPanel

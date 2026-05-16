@@ -3,7 +3,7 @@ import { LendAssetRow } from "@/components/features/lend/lend-asset-row"
 import { PositionPanel } from "@/components/features/lend/position-panel"
 
 export const metadata = {
-  title: "Lend / Borrow — NexDEX",
+  title: "Lend / Borrow — Amana",
 }
 
 export default function LendPage() {

@@ -16,13 +16,13 @@ const dmMono = DM_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "NexDEX — Decentralized Exchange",
+  title: "Amana — Decentralized Exchange",
   description:
     "Trade, stake, lend, and provide liquidity on the most powerful decentralized exchange. Built on Ethereum.",
   keywords: ["DEX", "DeFi", "swap", "stake", "lending", "liquidity", "Ethereum"],
   openGraph: {
-    title: "NexDEX — Decentralized Exchange",
-    description: "Trade, stake, lend, and provide liquidity on NexDEX.",
+    title: "Amana — Decentralized Exchange",
+    description: "Trade, stake, lend, and provide liquidity on Amana.",
     type: "website",
   },
 }

@@ -55,7 +55,7 @@ export const useSwapStore = create<SwapState>()(
         set((state) => ({ autoRouter: !state.autoRouter })),
     }),
     {
-      name: "nexdex-swap-settings",
+      name: "amana-swap-settings",
       partialState: (state) => ({
         slippage: state.slippage,
         deadline: state.deadline,

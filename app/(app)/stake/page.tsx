@@ -2,8 +2,8 @@ import { MOCK_STAKE_POOLS } from "@/lib/mock-data"
 import { StakePoolCard } from "@/components/features/stake/stake-pool-card"
 
 export const metadata = {
-  title: "Stake — NexDEX",
-  description: "Stake your tokens and earn rewards on NexDEX.",
+  title: "Stake — Amana",
+  description: "Stake your tokens and earn rewards on Amana.",
 }
 
 export default function StakePage() {
