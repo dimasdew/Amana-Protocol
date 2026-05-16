@@ -66,7 +66,7 @@ export function PriceChart() {
   const isPositive = priceChange >= 0
 
   return (
-    <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-2xl p-[18px]">
+    <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-[18px] transition-colors">
       {/* Pair header */}
       <div className="flex items-center gap-3 mb-5">
         <TokenPair symbol0="ETH" symbol1="USDC" size="md" />
@@ -79,8 +79,8 @@ export function PriceChart() {
             className={cn(
               "text-[13px] font-semibold px-2 py-[3px] rounded-md font-mono",
               isPositive
-                ? "bg-[#C9A84C]/10 text-[#C9A84C]"
-                : "bg-[#800020]/10 text-[#800020]"
+                ? "bg-[var(--color-accent-gold)]/10 text-[var(--color-accent-gold)]"
+                : "bg-[var(--color-accent-maroon)]/10 text-[var(--color-accent-maroon)]"
             )}
           >
             {isPositive ? "+" : ""}
@@ -98,8 +98,8 @@ export function PriceChart() {
             className={cn(
               "px-[10px] py-1 rounded-md text-[11px] font-bold font-mono transition-all",
               timeframe === tf
-                ? "bg-[#2E2E30] text-white border border-white/[0.12]"
-                : "text-[#A09080] hover:text-white"
+                ? "bg-[var(--color-bg-elevated)] text-[var(--color-text-primary)] border border-[var(--color-border-default)]"
+                : "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
             )}
           >
             {tf}
@@ -112,8 +112,8 @@ export function PriceChart() {
         <AreaChart data={chartData} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="priceGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#C9A84C" stopOpacity={0.15} />
-              <stop offset="95%" stopColor="#C9A84C" stopOpacity={0.01} />
+              <stop offset="5%" stopColor="var(--color-accent-gold)" stopOpacity={0.15} />
+              <stop offset="95%" stopColor="var(--color-accent-gold)" stopOpacity={0.01} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
@@ -121,15 +121,15 @@ export function PriceChart() {
           <YAxis
             domain={["auto", "auto"]}
             tickFormatter={(v) => `$${(v / 1000).toFixed(1)}k`}
-            tick={{ fill: "rgba(255,255,255,0.25)", fontSize: 10, fontFamily: "DM Mono" }}
+            tick={{ fill: "rgba(160,144,128,0.6)", fontSize: 10, fontFamily: "DM Mono" }}
             axisLine={false}
             tickLine={false}
             width={48}
           />
           <Tooltip
             contentStyle={{
-              background: "#2E2E30",
-              border: "1px solid rgba(255,255,255,0.12)",
+              background: "var(--color-bg-elevated)",
+              border: "1px solid var(--color-border-default)",
               borderRadius: "8px",
               fontFamily: "DM Mono",
               fontSize: "12px",
@@ -140,11 +140,11 @@ export function PriceChart() {
           <Area
             type="monotone"
             dataKey="price"
-            stroke="#C9A84C"
+            stroke="var(--color-accent-gold)"
             strokeWidth={1.5}
             fill="url(#priceGrad)"
             dot={false}
-            activeDot={{ r: 4, fill: "#C9A84C" }}
+            activeDot={{ r: 4, fill: "var(--color-accent-gold)" }}
           />
         </AreaChart>
       </ResponsiveContainer>
@@ -154,14 +154,15 @@ export function PriceChart() {
         <BarChart data={chartData} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
           <Bar
             dataKey="volume"
-            fill="rgba(201,168,76,0.15)"
+            fill="var(--color-accent-gold)"
+            opacity={0.15}
             radius={[1, 1, 0, 0]}
           />
         </BarChart>
       </ResponsiveContainer>
 
       {/* Stats row */}
-      <div className="grid grid-cols-4 gap-3 mt-4 pt-4 border-t border-white/[0.07]">
+      <div className="grid grid-cols-4 gap-3 mt-4 pt-4 border-t border-[var(--color-border-subtle)]">
         {[
           { label: "24h High", value: formatUSD(PAIR_STATS.high) },
           { label: "24h Low", value: formatUSD(PAIR_STATS.low) },
@@ -169,7 +170,7 @@ export function PriceChart() {
           { label: "Liquidity", value: PAIR_STATS.liquidity },
         ].map((stat) => (
           <div key={stat.label}>
-            <p className="text-[10px] text-[#A09080] font-bold uppercase tracking-[0.7px]">
+            <p className="text-[10px] text-[var(--color-text-muted)] font-bold uppercase tracking-[0.7px]">
               {stat.label}
             </p>
             <p className="text-[13px] font-bold font-mono mt-[2px]">{stat.value}</p>

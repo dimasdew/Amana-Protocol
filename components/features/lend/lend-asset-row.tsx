@@ -3,9 +3,9 @@ import { formatUSD, cn } from "@/lib/utils"
 import type { LendAsset } from "@/types"
 
 const RISK_STYLES: Record<LendAsset["risk"], string> = {
-  low: "bg-[#C9A84C]/10 text-[#C9A84C]",
-  medium: "bg-[#C9A84C]/10 text-[#C9A84C]",
-  high: "bg-[#800020]/10 text-[#800020]",
+  low: "bg-[var(--color-accent-gold)]/10 text-[var(--color-accent-gold)]",
+  medium: "bg-[var(--color-accent-gold)]/10 text-[var(--color-accent-gold)]",
+  high: "bg-[var(--color-accent-maroon)]/10 text-[var(--color-accent-maroon)]",
 }
 
 export function LendAssetRow({
@@ -16,15 +16,15 @@ export function LendAssetRow({
   mode: "supply" | "borrow"
 }) {
   const apy = mode === "supply" ? asset.supplyApy : asset.borrowApr
-  const apyColor = mode === "supply" ? "text-[#C9A84C]" : "text-[#C9A84C]"
+  const apyColor = "text-[var(--color-accent-gold)]"
 
   return (
-    <div className="flex items-center gap-3 py-[10px] border-b border-white/[0.07] last:border-b-0 cursor-pointer hover:opacity-80 transition-opacity group">
+    <div className="flex items-center gap-3 py-[10px] border-b border-[var(--color-border-subtle)] last:border-b-0 cursor-pointer hover:opacity-80 transition-opacity group">
       {/* Token info */}
       <TokenIcon symbol={asset.token.symbol} size="md" />
       <div className="flex-1 min-w-0">
         <p className="text-[13px] font-bold">{asset.token.name}</p>
-        <p className="text-[11px] text-[#A09080] font-mono">{asset.token.symbol}</p>
+        <p className="text-[11px] text-[var(--color-text-muted)] font-mono">{asset.token.symbol}</p>
       </div>
 
       {/* Risk badge (supply only) */}
@@ -42,7 +42,7 @@ export function LendAssetRow({
       {/* Utilization (borrow only) */}
       {mode === "borrow" && (
         <div className="text-right hidden sm:block">
-          <p className="text-[10px] text-[#A09080]">Utilization</p>
+          <p className="text-[10px] text-[var(--color-text-muted)]">Utilization</p>
           <p className="text-[12px] font-mono font-bold">{asset.utilizationRate}%</p>
         </div>
       )}
@@ -52,13 +52,13 @@ export function LendAssetRow({
         <p className={cn("text-[13px] font-bold font-mono", apyColor)}>
           {apy.toFixed(2)}%
         </p>
-        <p className="text-[11px] text-[#A09080]">
+        <p className="text-[11px] text-[var(--color-text-muted)]">
           {mode === "supply" ? "Supply APY" : "Borrow APR"}
         </p>
       </div>
 
       {/* CTA */}
-      <button className="opacity-0 group-hover:opacity-100 transition-opacity ml-2 px-3 py-[5px] rounded-lg text-[11px] font-bold border border-white/[0.12] hover:border-[#C9A84C]/50 hover:text-[#C9A84C] transition-colors">
+      <button className="opacity-0 group-hover:opacity-100 transition-opacity ml-2 px-3 py-[5px] rounded-lg text-[11px] font-bold border border-[var(--color-border-default)] hover:border-[var(--color-accent-gold)]/50 hover:text-[var(--color-accent-gold)] transition-colors">
         {mode === "supply" ? "Supply" : "Borrow"}
       </button>
     </div>

@@ -115,43 +115,43 @@ function MyPositionRow({ position }: { position: typeof MY_POSITIONS[0] }) {
   const rangeProgress = Math.min(Math.max(((currentPrice - rangeMin) / (rangeMax - rangeMin)) * 100, 0), 100)
 
   return (
-    <tr className="group hover:bg-[#252527] transition-colors">
+    <tr className="group hover:bg-[var(--color-bg-tertiary)] transition-colors">
       <td className="py-3 px-3">
         <div className="flex items-center gap-2">
           <TokenPair symbol0={pool.token0.symbol} symbol1={pool.token1.symbol} />
           <div>
             <p className="text-[13px] font-bold">{pool.token0.symbol} / {pool.token1.symbol}</p>
-            <p className="text-[10px] text-[#A09080] font-mono">V3 Pool</p>
+            <p className="text-[10px] text-[var(--color-text-muted)] font-mono">V3 Pool</p>
           </div>
         </div>
       </td>
       <td className="py-3 px-3">
-        <span className="text-[11px] font-bold font-mono bg-[#C9A84C]/10 text-[#C9A84C] px-2 py-[2px] rounded-md">{feeTierToPercent(pool.feeTier)}</span>
+        <span className="text-[11px] font-bold font-mono bg-[var(--color-accent-gold)]/10 text-[var(--color-accent-gold)] px-2 py-[2px] rounded-md">{feeTierToPercent(pool.feeTier)}</span>
       </td>
       <td className="py-3 px-3">
         <p className="text-[13px] font-bold font-mono">{formatUSD(myLiquidity)}</p>
-        <p className="text-[10px] text-[#A09080]">{token0Amount} + {token1Amount}</p>
+        <p className="text-[10px] text-[var(--color-text-muted)]">{token0Amount} + {token1Amount}</p>
       </td>
       <td className="py-3 px-3">
-        <span className="text-[13px] font-bold font-mono text-[#C9A84C]">{formatUSD(unclaimedFees)}</span>
+        <span className="text-[13px] font-bold font-mono text-[var(--color-accent-gold)]">{formatUSD(unclaimedFees)}</span>
       </td>
       <td className="py-3 px-3">
-        <p className="text-[11px] font-mono text-[#BBA890]">${rangeMin.toLocaleString()} – ${rangeMax.toLocaleString()}</p>
-        <div className="h-[4px] bg-[#2E2E30] rounded-full mt-1 w-24 overflow-hidden">
-          <div className="h-full bg-[#C9A84C] rounded-full" style={{ width: `${rangeProgress}%` }} />
+        <p className="text-[11px] font-mono text-[var(--color-text-secondary)]">${rangeMin.toLocaleString()} – ${rangeMax.toLocaleString()}</p>
+        <div className="h-[4px] bg-[var(--color-bg-elevated)] rounded-full mt-1 w-24 overflow-hidden">
+          <div className="h-full bg-[var(--color-accent-gold)] rounded-full" style={{ width: `${rangeProgress}%` }} />
         </div>
-        <p className={cn("text-[9px] mt-1 font-mono font-bold", inRange ? "text-[#C9A84C]" : "text-[#800020]")}>
+        <p className={cn("text-[9px] mt-1 font-mono font-bold", inRange ? "text-[var(--color-accent-gold)]" : "text-[var(--color-accent-maroon)]")}>
           {inRange ? "In Range" : "Out of Range"}
         </p>
       </td>
       <td className="py-3 px-3">
-        <span className="text-[13px] font-bold font-mono text-[#C9A84C]">{apr}%</span>
+        <span className="text-[13px] font-bold font-mono text-[var(--color-accent-gold)]">{apr}%</span>
       </td>
       <td className="py-3 px-3">
         <div className="flex gap-[6px]">
-          <button className="px-2 py-[5px] bg-[#C9A84C]/10 border border-[#C9A84C]/30 text-[#C9A84C] rounded-lg text-[11px] font-bold hover:bg-[#C9A84C]/20 transition-colors">Collect</button>
-          <button className="px-2 py-[5px] border border-white/[0.12] text-[#BBA890] rounded-lg text-[11px] font-bold hover:bg-[#2E2E30] hover:text-white transition-all">Add</button>
-          <button className="px-2 py-[5px] border border-white/[0.12] text-[#BBA890] rounded-lg text-[11px] font-bold hover:bg-[#2E2E30] hover:text-white transition-all">Remove</button>
+          <button className="px-2 py-[5px] bg-[var(--color-accent-gold)]/10 border border-[var(--color-accent-gold)]/30 text-[var(--color-accent-gold)] rounded-lg text-[11px] font-bold hover:bg-[var(--color-accent-gold)]/20 transition-colors">Collect</button>
+          <button className="px-2 py-[5px] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] rounded-lg text-[11px] font-bold hover:bg-[var(--color-bg-elevated)] hover:text-[var(--color-text-primary)] transition-all">Add</button>
+          <button className="px-2 py-[5px] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] rounded-lg text-[11px] font-bold hover:bg-[var(--color-bg-elevated)] hover:text-[var(--color-text-primary)] transition-all">Remove</button>
         </div>
       </td>
     </tr>

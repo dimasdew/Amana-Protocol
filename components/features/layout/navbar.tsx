@@ -31,7 +31,7 @@ export function Navbar() {
         </button>
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-[10px] shrink-0">
+        <Link href="/dex" className="flex items-center gap-[10px] shrink-0">
           <div className="w-8 h-8 rounded-[10px] bg-gradient-to-br from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] flex items-center justify-center text-sm font-bold text-black shadow-lg shadow-[var(--color-accent-gold)]/10">
             ⬡
           </div>

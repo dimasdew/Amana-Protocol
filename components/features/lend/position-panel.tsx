@@ -22,42 +22,42 @@ export function PositionPanel() {
   const { healthFactor } = MOCK_POSITION
   const healthColor =
     healthFactor >= 2
-      ? "text-[#C9A84C]"
+      ? "text-[var(--color-accent-gold)]"
       : healthFactor >= 1.2
-      ? "text-[#C9A84C]"
-      : "text-[#800020]"
+      ? "text-[var(--color-accent-gold)]"
+      : "text-[var(--color-accent-maroon)]"
 
   const healthBarWidth = Math.min((healthFactor / 3) * 100, 100)
 
   return (
-    <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-2xl overflow-hidden">
-      <div className="flex items-center justify-between px-[18px] py-[14px] border-b border-white/[0.07]">
-        <span className="text-[13px] font-bold text-[#BBA890] uppercase tracking-[0.5px]">
+    <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl overflow-hidden transition-colors">
+      <div className="flex items-center justify-between px-[18px] py-[14px] border-b border-[var(--color-border-subtle)]">
+        <span className="text-[13px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.5px]">
           My Position
         </span>
-        <span className="text-[11px] font-mono text-[#C9A84C]">
+        <span className="text-[11px] font-mono text-[var(--color-accent-gold)]">
           Net APY: +{MOCK_POSITION.netApy}%
         </span>
       </div>
 
       <div className="p-[18px] space-y-4">
         {/* Health factor */}
-        <div className="bg-[#252527] border border-white/[0.07] rounded-xl p-3">
-          <p className="text-[11px] font-bold text-[#A09080] uppercase tracking-[0.7px] mb-1">
+        <div className="bg-[var(--color-bg-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-3">
+          <p className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.7px] mb-1">
             Health Factor
           </p>
           <p className={cn("text-[22px] font-bold font-mono", healthColor)}>
             {healthFactor.toFixed(2)}
           </p>
-          <div className="h-[6px] bg-[#2E2E30] rounded-full my-2 overflow-hidden">
+          <div className="h-[6px] bg-[var(--color-bg-elevated)] rounded-full my-2 overflow-hidden">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-[#800020] via-[#C9A84C] to-[#C9A84C]"
+              className="h-full rounded-full bg-gradient-to-r from-[var(--color-accent-maroon)] via-[var(--color-accent-gold)] to-[var(--color-accent-gold)]"
               style={{ width: `${healthBarWidth}%` }}
             />
           </div>
-          <p className="text-[10px] text-[#A09080]">
+          <p className="text-[10px] text-[var(--color-text-muted)]">
             {healthFactor < 1.2 ? (
-              <span className="flex items-center gap-1 text-[#800020]">
+              <span className="flex items-center gap-1 text-[var(--color-accent-maroon)]">
                 <AlertTriangle size={10} /> Danger: close to liquidation
               </span>
             ) : (
@@ -68,19 +68,19 @@ export function PositionPanel() {
 
         {/* Supplied vs borrowed */}
         <div className="grid grid-cols-2 gap-2">
-          <div className="bg-[#252527] border border-white/[0.07] rounded-xl p-3">
-            <p className="text-[10px] font-bold text-[#A09080] uppercase tracking-[0.7px]">
+          <div className="bg-[var(--color-bg-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-3">
+            <p className="text-[10px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.7px]">
               Supplied
             </p>
-            <p className="text-[18px] font-bold font-mono text-[#C9A84C] mt-1">
+            <p className="text-[18px] font-bold font-mono text-[var(--color-accent-gold)] mt-1">
               {formatUSD(MOCK_POSITION.totalSupplied)}
             </p>
           </div>
-          <div className="bg-[#252527] border border-white/[0.07] rounded-xl p-3">
-            <p className="text-[10px] font-bold text-[#A09080] uppercase tracking-[0.7px]">
+          <div className="bg-[var(--color-bg-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-3">
+            <p className="text-[10px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.7px]">
               Borrowed
             </p>
-            <p className="text-[18px] font-bold font-mono text-[#C9A84C] mt-1">
+            <p className="text-[18px] font-bold font-mono text-[var(--color-accent-gold)] mt-1">
               {formatUSD(MOCK_POSITION.totalBorrowed)}
             </p>
           </div>
@@ -88,22 +88,22 @@ export function PositionPanel() {
 
         {/* Supplied assets */}
         <div>
-          <p className="text-[11px] font-bold text-[#A09080] uppercase tracking-[0.7px] mb-2">
+          <p className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.7px] mb-2">
             Supplied Assets
           </p>
-          <div className="bg-[#252527] rounded-xl overflow-hidden">
+          <div className="bg-[var(--color-bg-tertiary)] rounded-xl overflow-hidden">
             {MOCK_POSITION.supplied.map((item, i) => (
               <div
                 key={item.symbol}
                 className={cn(
                   "flex items-center gap-2 px-3 py-[8px]",
-                  i > 0 && "border-t border-white/[0.07]"
+                  i > 0 && "border-t border-[var(--color-border-subtle)]"
                 )}
               >
                 <TokenIcon symbol={item.symbol} size="xs" />
                 <span className="flex-1 text-[12px] font-bold">{item.symbol}</span>
-                <span className="text-[12px] font-mono text-[#BBA890]">{item.amount}</span>
-                <span className="text-[11px] font-mono text-[#C9A84C]">{item.apy}%</span>
+                <span className="text-[12px] font-mono text-[var(--color-text-secondary)]">{item.amount}</span>
+                <span className="text-[11px] font-mono text-[var(--color-accent-gold)]">{item.apy}%</span>
               </div>
             ))}
           </div>
@@ -111,31 +111,31 @@ export function PositionPanel() {
 
         {/* Borrowed assets */}
         <div>
-          <p className="text-[11px] font-bold text-[#A09080] uppercase tracking-[0.7px] mb-2">
+          <p className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.7px] mb-2">
             Borrowed Assets
           </p>
-          <div className="bg-[#252527] rounded-xl overflow-hidden">
+          <div className="bg-[var(--color-bg-tertiary)] rounded-xl overflow-hidden">
             {MOCK_POSITION.borrowed.map((item, i) => (
               <div
                 key={item.symbol}
                 className={cn(
                   "flex items-center gap-2 px-3 py-[8px]",
-                  i > 0 && "border-t border-white/[0.07]"
+                  i > 0 && "border-t border-[var(--color-border-subtle)]"
                 )}
               >
                 <TokenIcon symbol={item.symbol} size="xs" />
                 <span className="flex-1 text-[12px] font-bold">{item.symbol}</span>
-                <span className="text-[12px] font-mono text-[#BBA890]">{item.amount}</span>
-                <span className="text-[11px] font-mono text-[#C9A84C]">{item.apr}%</span>
+                <span className="text-[12px] font-mono text-[var(--color-text-secondary)]">{item.amount}</span>
+                <span className="text-[11px] font-mono text-[var(--color-accent-gold)]">{item.apr}%</span>
               </div>
             ))}
           </div>
         </div>
 
-        <button className="w-full py-[10px] rounded-lg bg-[#2E2E30] border border-white/[0.12] text-[13px] font-bold hover:border-[#C9A84C]/50 hover:text-[#C9A84C] transition-all">
+        <button className="w-full py-[10px] rounded-lg bg-[var(--color-bg-elevated)] border border-[var(--color-border-default)] text-[13px] font-bold hover:border-[var(--color-accent-gold)]/50 hover:text-[var(--color-accent-gold)] transition-all">
           Supply More Assets
         </button>
-        <button className="w-full py-[10px] rounded-lg bg-[#C9A84C]/10 border border-[#C9A84C]/30 text-[#C9A84C] text-[13px] font-bold hover:bg-[#C9A84C]/15 transition-all">
+        <button className="w-full py-[10px] rounded-lg bg-[var(--color-accent-gold)]/10 border border-[var(--color-accent-gold)]/30 text-[var(--color-accent-gold)] text-[13px] font-bold hover:bg-[var(--color-accent-gold)]/15 transition-all">
           Borrow More
         </button>
       </div>

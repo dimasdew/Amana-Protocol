@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import "./landing.css"
 
@@ -36,19 +36,7 @@ export default function LandingPage() {
   return (
     <div className="landing-page">
       {/* ── Nav ── */}
-      <nav className="landing-nav">
-        <Link href="/" className="nav-logo">
-          <div className="logo-mark">⬡</div>
-          <span className="logo-text">Amana<span>Protocol</span></span>
-        </Link>
-        <div className="nav-links">
-          <a href="#features" className="nav-link">Features</a>
-          <a href="#how" className="nav-link">How it Works</a>
-          <a href="#stack" className="nav-link">Tech Stack</a>
-          <a href="#" className="nav-link">Docs</a>
-        </div>
-        <Link href="/dex" className="nav-cta">Launch App →</Link>
-      </nav>
+      <MobileNav />
 
       {/* ── Hero ── */}
       <section className="hero">
@@ -311,7 +299,7 @@ export default function LandingPage() {
               <p>The most powerful decentralized exchange. Built for serious DeFi participants.</p>
             </div>
             <div className="footer-cols">
-              <div className="footer-col"><h4>Product</h4><Link href="/dex">Swap</Link><Link href="/dex/stake">Stake</Link><Link href="/dex/lend">Lend / Borrow</Link><Link href="/dex/liquidity">Liquidity</Link></div>
+              <div className="footer-col"><h4>Product</h4><Link href="/dex">Swap</Link><Link href="/dex/stake">Stake</Link><Link href="/dex/lend">Lend / Borrow</Link><Link href="/dex/liquidity">Liquidity</Link><Link href="/dex/analytics">Analytics</Link><Link href="/dex/portfolio">Portfolio</Link></div>
               <div className="footer-col"><h4>Developers</h4><a href="#">Documentation</a><a href="#">GitHub</a><a href="#">Smart Contracts</a><a href="#">Bug Bounty</a></div>
               <div className="footer-col"><h4>Community</h4><a href="#">Twitter / X</a><a href="#">Discord</a><a href="#">Telegram</a><a href="#">Blog</a></div>
             </div>
@@ -323,5 +311,49 @@ export default function LandingPage() {
         </div>
       </footer>
     </div>
+  )
+}
+
+function MobileNav() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <nav className="landing-nav">
+      <Link href="/" className="nav-logo">
+        <div className="logo-mark">⬡</div>
+        <span className="logo-text">Amana<span>Protocol</span></span>
+      </Link>
+      <div className="nav-links">
+        <a href="#features" className="nav-link">Features</a>
+        <a href="#how" className="nav-link">How it Works</a>
+        <a href="#stack" className="nav-link">Tech Stack</a>
+        <a href="#" className="nav-link">Docs</a>
+      </div>
+      <Link href="/dex" className="nav-cta nav-cta-desktop">Launch App →</Link>
+
+      {/* Hamburger button */}
+      <button
+        className="nav-hamburger"
+        onClick={() => setOpen(!open)}
+        aria-label="Toggle menu"
+      >
+        <span className={`hamburger-line ${open ? "hl-open-1" : ""}`} />
+        <span className={`hamburger-line ${open ? "hl-open-2" : ""}`} />
+        <span className={`hamburger-line ${open ? "hl-open-3" : ""}`} />
+      </button>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="mobile-menu" onClick={() => setOpen(false)}>
+          <a href="#features" className="mobile-link">Features</a>
+          <a href="#how" className="mobile-link">How it Works</a>
+          <a href="#stack" className="mobile-link">Tech Stack</a>
+          <a href="#" className="mobile-link">Docs</a>
+          <Link href="/dex" className="btn-primary" style={{ textAlign: "center", marginTop: 8 }}>
+            Launch App →
+          </Link>
+        </div>
+      )}
+    </nav>
   )
 }
