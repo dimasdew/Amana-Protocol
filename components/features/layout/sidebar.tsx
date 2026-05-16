@@ -19,7 +19,7 @@ const MAIN_ITEMS = [
   {
     label: "Swap",
     desc: "Trade tokens",
-    href: "/",
+    href: "/app",
     icon: ArrowLeftRight,
     color: "text-[#C9A84C]",
     bg: "bg-[#C9A84C]/10",
@@ -28,7 +28,7 @@ const MAIN_ITEMS = [
   {
     label: "Stake",
     desc: "Earn rewards",
-    href: "/stake",
+    href: "/app/stake",
     icon: Flame,
     color: "text-[#D4A853]",
     bg: "bg-[#D4A853]/10",
@@ -38,7 +38,7 @@ const MAIN_ITEMS = [
   {
     label: "Lend / Borrow",
     desc: "Supply & borrow",
-    href: "/lend",
+    href: "/app/lend",
     icon: Building2,
     color: "text-[#BBA890]",
     bg: "bg-[#BBA890]/10",
@@ -47,7 +47,7 @@ const MAIN_ITEMS = [
   {
     label: "Liquidity",
     desc: "Provide LP",
-    href: "/liquidity",
+    href: "/app/liquidity",
     icon: Droplets,
     color: "text-[#9B7A3C]",
     bg: "bg-[#9B7A3C]/10",
@@ -59,7 +59,7 @@ const SECONDARY_ITEMS = [
   {
     label: "Analytics",
     desc: "Protocol stats",
-    href: "/analytics",
+    href: "/app/analytics",
     icon: BarChart3,
     color: "text-[#BBA890]",
     bg: "bg-[#BBA890]/10",
@@ -68,7 +68,7 @@ const SECONDARY_ITEMS = [
   {
     label: "Transactions",
     desc: "History",
-    href: "/transactions",
+    href: "/app/transactions",
     icon: ListOrdered,
     color: "text-[#A09080]",
     bg: "bg-[#A09080]/10",
@@ -80,7 +80,7 @@ const ACCOUNT_ITEMS = [
   {
     label: "Portfolio",
     desc: "Your assets",
-    href: "/portfolio",
+    href: "/app/portfolio",
     icon: Wallet,
     color: "text-[#C9A84C]",
     bg: "bg-[#C9A84C]/10",
@@ -89,7 +89,7 @@ const ACCOUNT_ITEMS = [
   {
     label: "Settings",
     desc: "Preferences",
-    href: "/settings",
+    href: "/app/settings",
     icon: Settings,
     color: "text-[#A09080]",
     bg: "bg-[#A09080]/10",
@@ -153,7 +153,7 @@ function SidebarItem({
   pathname: string
 }) {
   const isActive =
-    item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
+    item.href === "/app" ? pathname === "/app" : pathname.startsWith(item.href)
   const Icon = item.icon
 
   return (

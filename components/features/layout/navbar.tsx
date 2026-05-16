@@ -9,10 +9,10 @@ import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 
 const NAV_TABS = [
-  { label: "Swap", href: "/" },
-  { label: "Stake", href: "/stake" },
-  { label: "Lend", href: "/lend" },
-  { label: "Pools", href: "/liquidity" },
+  { label: "Swap", href: "/app" },
+  { label: "Stake", href: "/app/stake" },
+  { label: "Lend", href: "/app/lend" },
+  { label: "Pools", href: "/app/liquidity" },
 ]
 
 export function Navbar() {
@@ -49,7 +49,7 @@ export function Navbar() {
         <nav className="hidden md:flex gap-[2px] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] p-[3px]">
           {NAV_TABS.map((tab) => {
             const isActive =
-              tab.href === "/" ? pathname === "/" : pathname.startsWith(tab.href)
+              tab.href === "/app" ? pathname === "/app" : pathname.startsWith(tab.href)
             return (
               <Link
                 key={tab.href}
@@ -92,7 +92,7 @@ export function Navbar() {
           <nav className="flex flex-col p-4 gap-1">
             {NAV_TABS.map((tab) => {
               const isActive =
-                tab.href === "/" ? pathname === "/" : pathname.startsWith(tab.href)
+                tab.href === "/app" ? pathname === "/app" : pathname.startsWith(tab.href)
               return (
                 <Link
                   key={tab.href}
