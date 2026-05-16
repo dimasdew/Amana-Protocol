@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { Lock, TrendingUp, Zap } from "lucide-react"
 import { TokenIcon } from "@/components/ui/token-icon"
+import { ActionModal } from "@/components/ui/action-modal"
+import { useToast } from "@/components/ui/toast"
 import { formatUSD, formatToken, cn } from "@/lib/utils"
 import type { StakePool } from "@/types"
 
@@ -13,6 +15,8 @@ interface StakePoolCardProps {
 
 export function StakePoolCard({ pool, highlight }: StakePoolCardProps) {
   const [expanded, setExpanded] = useState(false)
+  const [stakeModalOpen, setStakeModalOpen] = useState(false)
+  const { toast } = useToast()
 
   const apyColor =
     pool.apy >= 15
@@ -83,7 +87,7 @@ export function StakePoolCard({ pool, highlight }: StakePoolCardProps) {
             </p>
           </div>
           <button
-            onClick={(e) => { e.stopPropagation() }}
+            onClick={(e) => { e.stopPropagation(); toast("success", "Rewards Claimed", `Claimed ${pool.myRewards} ${pool.token.symbol}`) }}
             className="px-3 py-[6px] bg-[var(--color-accent-gold)]/10 border border-[var(--color-accent-gold)]/30 text-[var(--color-accent-gold)] rounded-lg text-[11px] font-bold hover:bg-[var(--color-accent-gold)]/20 transition-colors"
           >
             Claim
@@ -109,11 +113,21 @@ export function StakePoolCard({ pool, highlight }: StakePoolCardProps) {
 
       {/* Action button */}
       <button
-        onClick={(e) => { e.stopPropagation() }}
+        onClick={(e) => { e.stopPropagation(); setStakeModalOpen(true) }}
         className="w-full py-[9px] rounded-lg text-[12px] font-bold border border-[var(--color-border-default)] bg-transparent hover:bg-[var(--color-bg-elevated)] hover:text-[var(--color-accent-gold)] hover:border-[var(--color-accent-gold)]/50 transition-all"
       >
         {pool.myStaked ? "Stake More" : "Stake"}
       </button>
+
+      <ActionModal
+        open={stakeModalOpen}
+        onClose={() => setStakeModalOpen(false)}
+        title={`Stake ${pool.token.symbol}`}
+        tokenSymbol={pool.token.symbol}
+        actionLabel="Stake"
+        balance={pool.myStaked ? formatToken(pool.myStaked) : undefined}
+        balanceLabel="Staked"
+      />
     </div>
   )
 }

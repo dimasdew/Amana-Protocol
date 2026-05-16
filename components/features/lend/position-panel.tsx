@@ -1,7 +1,9 @@
 "use client"
 
+import { useState } from "react"
 import { AlertTriangle } from "lucide-react"
 import { TokenIcon } from "@/components/ui/token-icon"
+import { ActionModal } from "@/components/ui/action-modal"
 import { formatUSD, cn } from "@/lib/utils"
 
 const MOCK_POSITION = {
@@ -19,6 +21,8 @@ const MOCK_POSITION = {
 }
 
 export function PositionPanel() {
+  const [supplyModalOpen, setSupplyModalOpen] = useState(false)
+  const [borrowModalOpen, setBorrowModalOpen] = useState(false)
   const { healthFactor } = MOCK_POSITION
   const healthColor =
     healthFactor >= 2
@@ -132,12 +136,34 @@ export function PositionPanel() {
           </div>
         </div>
 
-        <button className="w-full py-[10px] rounded-lg bg-[var(--color-bg-elevated)] border border-[var(--color-border-default)] text-[13px] font-bold hover:border-[var(--color-accent-gold)]/50 hover:text-[var(--color-accent-gold)] transition-all">
+        <button
+          onClick={() => setSupplyModalOpen(true)}
+          className="w-full py-[10px] rounded-lg bg-[var(--color-bg-elevated)] border border-[var(--color-border-default)] text-[13px] font-bold hover:border-[var(--color-accent-gold)]/50 hover:text-[var(--color-accent-gold)] transition-all"
+        >
           Supply More Assets
         </button>
-        <button className="w-full py-[10px] rounded-lg bg-[var(--color-accent-gold)]/10 border border-[var(--color-accent-gold)]/30 text-[var(--color-accent-gold)] text-[13px] font-bold hover:bg-[var(--color-accent-gold)]/15 transition-all">
+        <button
+          onClick={() => setBorrowModalOpen(true)}
+          className="w-full py-[10px] rounded-lg bg-[var(--color-accent-gold)]/10 border border-[var(--color-accent-gold)]/30 text-[var(--color-accent-gold)] text-[13px] font-bold hover:bg-[var(--color-accent-gold)]/15 transition-all"
+        >
           Borrow More
         </button>
+
+        <ActionModal
+          open={supplyModalOpen}
+          onClose={() => setSupplyModalOpen(false)}
+          title="Supply USDC"
+          tokenSymbol="USDC"
+          actionLabel="Supply"
+        />
+        <ActionModal
+          open={borrowModalOpen}
+          onClose={() => setBorrowModalOpen(false)}
+          title="Borrow USDC"
+          tokenSymbol="USDC"
+          actionLabel="Borrow"
+          actionColor="maroon"
+        />
       </div>
     </div>
   )

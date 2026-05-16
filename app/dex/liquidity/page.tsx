@@ -5,6 +5,7 @@ import { Plus } from "lucide-react"
 import { MOCK_POOLS } from "@/lib/mock-data"
 import { PoolRow } from "@/components/features/liquidity/pool-row"
 import { TokenPair } from "@/components/ui/token-icon"
+import { useToast } from "@/components/ui/toast"
 import { formatUSD, feeTierToPercent, cn } from "@/lib/utils"
 
 const MY_POSITIONS = [
@@ -36,6 +37,7 @@ type Timeframe = "24H" | "7D" | "30D"
 
 export default function LiquidityPage() {
   const [timeframe, setTimeframe] = useState<Timeframe>("24H")
+  const { toast } = useToast()
 
   return (
     <div className="space-y-5">
@@ -44,7 +46,10 @@ export default function LiquidityPage() {
           <h1 className="text-[22px] font-extrabold">Liquidity Pools</h1>
           <p className="text-[12px] text-[var(--color-text-muted)] mt-1">Provide liquidity and earn fees from every swap</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-[9px] bg-gradient-to-r from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] text-black rounded-lg text-[13px] font-bold hover:opacity-90 transition-opacity">
+        <button
+          onClick={() => toast("info", "New Position", "Select a pool and price range to provide liquidity")}
+          className="flex items-center gap-2 px-4 py-[9px] bg-gradient-to-r from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] text-black rounded-lg text-[13px] font-bold hover:opacity-90 transition-opacity"
+        >
           <Plus size={14} /> New Position
         </button>
       </div>
@@ -66,7 +71,7 @@ export default function LiquidityPage() {
             </thead>
             <tbody>
               {MY_POSITIONS.map((pos, i) => (
-                <MyPositionRow key={i} position={pos} />
+                <MyPositionRow key={i} position={pos} toast={toast} />
               ))}
             </tbody>
           </table>
@@ -109,7 +114,7 @@ export default function LiquidityPage() {
   )
 }
 
-function MyPositionRow({ position }: { position: typeof MY_POSITIONS[0] }) {
+function MyPositionRow({ position, toast }: { position: typeof MY_POSITIONS[0]; toast: (type: "success" | "error" | "info", title: string, message?: string) => void }) {
   const { pool, myLiquidity, token0Amount, token1Amount, unclaimedFees, rangeMin, rangeMax, currentPrice, apr } = position
   const inRange = currentPrice >= rangeMin && currentPrice <= rangeMax
   const rangeProgress = Math.min(Math.max(((currentPrice - rangeMin) / (rangeMax - rangeMin)) * 100, 0), 100)
@@ -149,9 +154,9 @@ function MyPositionRow({ position }: { position: typeof MY_POSITIONS[0] }) {
       </td>
       <td className="py-3 px-3">
         <div className="flex gap-[6px]">
-          <button className="px-2 py-[5px] bg-[var(--color-accent-gold)]/10 border border-[var(--color-accent-gold)]/30 text-[var(--color-accent-gold)] rounded-lg text-[11px] font-bold hover:bg-[var(--color-accent-gold)]/20 transition-colors">Collect</button>
-          <button className="px-2 py-[5px] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] rounded-lg text-[11px] font-bold hover:bg-[var(--color-bg-elevated)] hover:text-[var(--color-text-primary)] transition-all">Add</button>
-          <button className="px-2 py-[5px] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] rounded-lg text-[11px] font-bold hover:bg-[var(--color-bg-elevated)] hover:text-[var(--color-text-primary)] transition-all">Remove</button>
+          <button onClick={() => toast("success", "Fees Collected", `Collected ${formatUSD(unclaimedFees)} in fees`)} className="px-2 py-[5px] bg-[var(--color-accent-gold)]/10 border border-[var(--color-accent-gold)]/30 text-[var(--color-accent-gold)] rounded-lg text-[11px] font-bold hover:bg-[var(--color-accent-gold)]/20 transition-colors">Collect</button>
+          <button onClick={() => toast("info", "Add Liquidity", `Adding liquidity to ${pool.token0.symbol}/${pool.token1.symbol}`)} className="px-2 py-[5px] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] rounded-lg text-[11px] font-bold hover:bg-[var(--color-bg-elevated)] hover:text-[var(--color-text-primary)] transition-all">Add</button>
+          <button onClick={() => toast("info", "Remove Liquidity", `Removing liquidity from ${pool.token0.symbol}/${pool.token1.symbol}`)} className="px-2 py-[5px] border border-[var(--color-border-default)] text-[var(--color-text-secondary)] rounded-lg text-[11px] font-bold hover:bg-[var(--color-bg-elevated)] hover:text-[var(--color-text-primary)] transition-all">Remove</button>
         </div>
       </td>
     </tr>

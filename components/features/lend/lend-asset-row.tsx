@@ -1,4 +1,8 @@
+"use client"
+
+import { useState } from "react"
 import { TokenIcon } from "@/components/ui/token-icon"
+import { ActionModal } from "@/components/ui/action-modal"
 import { formatUSD, cn } from "@/lib/utils"
 import type { LendAsset } from "@/types"
 
@@ -15,6 +19,7 @@ export function LendAssetRow({
   asset: LendAsset
   mode: "supply" | "borrow"
 }) {
+  const [modalOpen, setModalOpen] = useState(false)
   const apy = mode === "supply" ? asset.supplyApy : asset.borrowApr
   const apyColor = "text-[var(--color-accent-gold)]"
 
@@ -58,9 +63,21 @@ export function LendAssetRow({
       </div>
 
       {/* CTA */}
-      <button className="opacity-0 group-hover:opacity-100 transition-opacity ml-2 px-3 py-[5px] rounded-lg text-[11px] font-bold border border-[var(--color-border-default)] hover:border-[var(--color-accent-gold)]/50 hover:text-[var(--color-accent-gold)] transition-colors">
+      <button
+        onClick={() => setModalOpen(true)}
+        className="opacity-0 group-hover:opacity-100 transition-opacity ml-2 px-3 py-[5px] rounded-lg text-[11px] font-bold border border-[var(--color-border-default)] hover:border-[var(--color-accent-gold)]/50 hover:text-[var(--color-accent-gold)] transition-colors"
+      >
         {mode === "supply" ? "Supply" : "Borrow"}
       </button>
+
+      <ActionModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title={`${mode === "supply" ? "Supply" : "Borrow"} ${asset.token.symbol}`}
+        tokenSymbol={asset.token.symbol}
+        actionLabel={mode === "supply" ? "Supply" : "Borrow"}
+        actionColor={mode === "supply" ? "gold" : "maroon"}
+      />
     </div>
   )
 }

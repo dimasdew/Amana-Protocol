@@ -6,6 +6,7 @@ import { WagmiProvider } from "wagmi"
 import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit"
 import { ThemeProvider, useTheme } from "next-themes"
 import { wagmiConfig } from "@/lib/wagmi"
+import { ToastProvider } from "@/components/ui/toast"
 import { useState } from "react"
 
 import "@rainbow-me/rainbowkit/styles.css"
@@ -50,7 +51,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <WagmiProvider config={wagmiConfig}>
         <QueryClientProvider client={queryClient}>
           <RainbowKitThemed>
-            {children}
+            <ToastProvider>
+              {children}
+            </ToastProvider>
           </RainbowKitThemed>
           {process.env.NODE_ENV === "development" && (
             <ReactQueryDevtools initialIsOpen={false} />

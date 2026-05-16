@@ -5,9 +5,11 @@ import { ArrowUpDown, Settings2, Info } from "lucide-react"
 import { useSwapStore } from "@/store"
 import { useSwapQuote, useTokenBalance } from "@/hooks/use-swap"
 import { TokenIcon } from "@/components/ui/token-icon"
+import { TokenSelectModal } from "./token-select-modal"
 import { formatUSD, formatToken, cn } from "@/lib/utils"
 import { TOKENS } from "@/lib/mock-data"
 import { useChainlinkPrices } from "@/lib/chainlink"
+import { useToast } from "@/components/ui/toast"
 import type { SlippageTolerance, Token } from "@/types"
 
 const SLIPPAGE_OPTIONS: SlippageTolerance[] = ["0.1", "0.5", "1.0"]
@@ -19,6 +21,8 @@ export function SwapPanel() {
     fromAmount,
     slippage,
     autoRouter,
+    setFromToken,
+    setToToken,
     setFromAmount,
     setSlippage,
     flipTokens,
@@ -26,6 +30,8 @@ export function SwapPanel() {
   } = useSwapStore()
 
   const [showSettings, setShowSettings] = useState(false)
+  const [tokenSelectFor, setTokenSelectFor] = useState<"from" | "to" | null>(null)
+  const { toast } = useToast()
 
   // Chainlink live prices
   const { prices: oraclePrices } = useChainlinkPrices(
@@ -150,6 +156,7 @@ export function SwapPanel() {
           balance={balance ? parseFloat(balance.formatted) : undefined}
           onChange={handleFromAmountChange}
           onMax={handleMax}
+          onTokenClick={() => setTokenSelectFor("from")}
           editable
         />
 
@@ -169,6 +176,7 @@ export function SwapPanel() {
           token={toToken}
           amount={quoteLoading ? "..." : toAmount}
           valueUSD={toValueUSD}
+          onTokenClick={() => setTokenSelectFor("to")}
           editable={false}
         />
 
@@ -222,6 +230,12 @@ export function SwapPanel() {
 
         {/* CTA */}
         <button
+          onClick={() => {
+            if (fromAmount && parseFloat(fromAmount) > 0) {
+              toast("success", "Swap Submitted", `Swapping ${fromAmount} ${fromToken.symbol} → ${toToken.symbol}`)
+              setFromAmount("")
+            }
+          }}
           className={cn(
             "w-full mt-4 py-[14px] rounded-[10px] text-[15px] font-bold tracking-[0.2px] transition-all duration-150",
             fromAmount && parseFloat(fromAmount) > 0
@@ -235,6 +249,17 @@ export function SwapPanel() {
             : "Enter an amount"}
         </button>
       </div>
+
+      {/* Token Select Modal */}
+      <TokenSelectModal
+        open={tokenSelectFor !== null}
+        onClose={() => setTokenSelectFor(null)}
+        onSelect={(token) => {
+          if (tokenSelectFor === "from") setFromToken(token)
+          else if (tokenSelectFor === "to") setToToken(token)
+        }}
+        excludeSymbol={tokenSelectFor === "from" ? toToken.symbol : fromToken.symbol}
+      />
     </div>
   )
 }
@@ -247,6 +272,7 @@ function TokenInput({
   balance,
   onChange,
   onMax,
+  onTokenClick,
   editable,
 }: {
   label: string
@@ -256,6 +282,7 @@ function TokenInput({
   balance?: number
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onMax?: () => void
+  onTokenClick?: () => void
   editable: boolean
 }) {
   return (
@@ -275,11 +302,14 @@ function TokenInput({
         )}
       </div>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 bg-[var(--color-bg-elevated)] border border-[var(--color-border-default)] rounded-lg px-3 py-[7px] cursor-pointer hover:border-[var(--color-accent-gold)]/50 transition-colors">
+        <button
+          onClick={onTokenClick}
+          className="flex items-center gap-2 bg-[var(--color-bg-elevated)] border border-[var(--color-border-default)] rounded-lg px-3 py-[7px] cursor-pointer hover:border-[var(--color-accent-gold)]/50 transition-colors"
+        >
           <TokenIcon symbol={token.symbol} size="sm" />
           <span className="text-[14px] font-bold">{token.symbol}</span>
           <span className="text-[10px] text-[var(--color-text-muted)]">▼</span>
-        </div>
+        </button>
         <div className="text-right">
           {editable ? (
             <input

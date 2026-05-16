@@ -213,9 +213,14 @@ export default function TransactionsPage() {
                     </span>
                   </td>
                   <td className="px-3 py-3">
-                    <button className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors">
+                    <a
+                      href={`https://etherscan.io/tx/${tx.hash}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-gold)] transition-colors"
+                    >
                       <ExternalLink size={12} />
-                    </button>
+                    </a>
                   </td>
                 </tr>
               )

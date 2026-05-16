@@ -2,6 +2,7 @@
 
 import { TOKENS } from "@/lib/mock-data"
 import { formatUSD, cn } from "@/lib/utils"
+import { useToast } from "@/components/ui/toast"
 import { TrendingUp, TrendingDown, Wallet, PiggyBank, Building2, Droplets } from "lucide-react"
 
 const PORTFOLIO_ASSETS = [
@@ -31,6 +32,7 @@ const LP_POSITIONS = [
 ]
 
 export default function PortfolioPage() {
+  const { toast } = useToast()
   const totalValue = PORTFOLIO_ASSETS.reduce((sum, a) => sum + a.value, 0)
   const totalStaked = STAKING_POSITIONS.reduce((sum, s) => sum + s.value, 0)
   const totalRewards = STAKING_POSITIONS.reduce((sum, s) => sum + s.rewardValue, 0)
@@ -145,7 +147,10 @@ export default function PortfolioPage() {
                   </span>
                 </div>
               </div>
-              <button className="w-full mt-3 py-2 text-[12px] font-bold bg-[var(--color-accent-gold)]/10 text-[var(--color-accent-gold)] rounded-lg hover:bg-[var(--color-accent-gold)]/20 transition-colors">
+              <button
+                onClick={() => toast("success", "Rewards Claimed", `Claimed ${pos.rewards} ${pos.token.symbol} (${formatUSD(pos.rewardValue)})`)}
+                className="w-full mt-3 py-2 text-[12px] font-bold bg-[var(--color-accent-gold)]/10 text-[var(--color-accent-gold)] rounded-lg hover:bg-[var(--color-accent-gold)]/20 transition-colors"
+              >
                 Claim Rewards
               </button>
             </div>

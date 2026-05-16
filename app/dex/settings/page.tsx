@@ -4,6 +4,7 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { Shield, Bell, Eye, Zap, Globe, Palette } from "lucide-react"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { useToast } from "@/components/ui/toast"
 import { useTheme } from "next-themes"
 
 const SLIPPAGE_OPTIONS = [0.1, 0.5, 1.0, 2.0]
@@ -13,6 +14,7 @@ const EXPLORERS = ["Etherscan", "Blockscout", "Tenderly"]
 
 export default function SettingsPage() {
   const { resolvedTheme } = useTheme()
+  const { toast } = useToast()
   const [slippage, setSlippage] = useState(0.5)
   const [gasPreference, setGasPreference] = useState<(typeof GAS_OPTIONS)[number]>("Standard")
   const [notifications, setNotifications] = useState({
@@ -167,7 +169,10 @@ export default function SettingsPage() {
               <p className="text-[13px] font-semibold">Connected Wallet</p>
               <p className="text-[11px] text-[var(--color-text-muted)] font-mono">0x7a3B...4e2F</p>
             </div>
-            <button className="text-[11px] font-bold text-[var(--color-accent-maroon)] hover:opacity-80 transition-opacity">
+            <button
+              onClick={() => toast("info", "Wallet Disconnected", "Use the Connect button to reconnect")}
+              className="text-[11px] font-bold text-[var(--color-accent-maroon)] hover:opacity-80 transition-opacity"
+            >
               Disconnect
             </button>
           </div>
@@ -176,7 +181,10 @@ export default function SettingsPage() {
               <p className="text-[13px] font-semibold">Approved Contracts</p>
               <p className="text-[11px] text-[var(--color-text-muted)]">3 contracts with unlimited approval</p>
             </div>
-            <button className="text-[11px] font-bold text-[var(--color-accent-gold)] hover:opacity-80 transition-opacity">
+            <button
+              onClick={() => toast("info", "Approved Contracts", "Manage token approvals on Etherscan or Revoke.cash")}
+              className="text-[11px] font-bold text-[var(--color-accent-gold)] hover:opacity-80 transition-opacity"
+            >
               Manage →
             </button>
           </div>
