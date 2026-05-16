@@ -1,12 +1,14 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ConnectButton } from "@rainbow-me/rainbowkit"
 import { Bell, Search, Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { SearchModal } from "./search-modal"
+import { NotificationPanel } from "./notification-panel"
 
 const NAV_TABS = [
   { label: "Swap", href: "/dex" },
@@ -18,6 +20,23 @@ const NAV_TABS = [
 export function Navbar() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [notifOpen, setNotifOpen] = useState(false)
+
+  // Global Cmd+K / Ctrl+K
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault()
+        setSearchOpen((prev) => !prev)
+      }
+    }
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [])
+
+  const handleSearchClose = useCallback(() => setSearchOpen(false), [])
+  const handleNotifClose = useCallback(() => setNotifOpen(false), [])
 
   return (
     <>
@@ -69,13 +88,27 @@ export function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-2 shrink-0">
-          <button className="hidden sm:flex w-8 h-8 items-center justify-center rounded-lg bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-default)] transition-all">
+          {/* Search button */}
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="hidden sm:flex w-8 h-8 items-center justify-center rounded-lg bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-default)] transition-all"
+            title="Search (⌘K)"
+          >
             <Search size={14} />
           </button>
-          <button className="hidden sm:flex w-8 h-8 items-center justify-center rounded-lg bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-default)] transition-all relative">
-            <Bell size={14} />
-            <span className="absolute top-[5px] right-[5px] w-[5px] h-[5px] rounded-full bg-[var(--color-accent-gold)]" />
-          </button>
+
+          {/* Notification button */}
+          <div className="relative">
+            <button
+              onClick={() => setNotifOpen(!notifOpen)}
+              className="hidden sm:flex w-8 h-8 items-center justify-center rounded-lg bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-default)] transition-all relative"
+            >
+              <Bell size={14} />
+              <span className="absolute top-[5px] right-[5px] w-[5px] h-[5px] rounded-full bg-[var(--color-accent-gold)]" />
+            </button>
+            <NotificationPanel open={notifOpen} onClose={handleNotifClose} />
+          </div>
+
           <ThemeToggle />
           <ChainBadge />
           <ConnectButton
@@ -85,6 +118,9 @@ export function Navbar() {
           />
         </div>
       </header>
+
+      {/* Search modal */}
+      <SearchModal open={searchOpen} onClose={handleSearchClose} />
 
       {/* Mobile navigation menu */}
       {mobileMenuOpen && (
