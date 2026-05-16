@@ -5,7 +5,7 @@ export function TickerBar() {
   const items = [...TICKER_PAIRS, ...TICKER_PAIRS] // duplicate for infinite scroll
 
   return (
-    <div className="h-7 bg-[#161618] border-b border-white/[0.04] overflow-hidden flex items-center">
+    <div className="hidden sm:flex h-7 bg-[#161618] border-b border-white/[0.04] overflow-hidden items-center">
       <div className="flex gap-6 animate-ticker whitespace-nowrap px-4">
         {items.map((item, i) => (
           <div key={i} className="flex items-center gap-[6px] text-[10.5px] font-mono">

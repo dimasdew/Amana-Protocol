@@ -101,7 +101,7 @@ export function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="w-[220px] shrink-0 border-r border-white/[0.07] flex flex-col p-3 overflow-y-auto bg-[#121012]">
+    <aside className="hidden lg:flex w-[220px] shrink-0 border-r border-white/[0.07] flex-col p-3 overflow-y-auto bg-[#121012]">
       <SidebarSection label="Trade" />
       <div className="flex flex-col gap-[2px]">
         {MAIN_ITEMS.map((item) => (

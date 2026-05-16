@@ -13,9 +13,9 @@ export default function LendPage() {
         <h1 className="text-[22px] font-extrabold">Lending Markets</h1>
         <p className="text-[12px] text-[#A09080] mt-1">Supply assets to earn interest or borrow against your collateral</p>
       </div>
-      <div className="grid grid-cols-[1fr_340px] gap-4 items-start">
+      <div className="grid grid-cols-1 xl:grid-cols-[1fr_340px] gap-4 items-start">
         <div className="space-y-3">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] p-4">
               <h2 className="text-[11px] font-bold text-[#A09080] uppercase tracking-[1px] mb-3">Supply Markets</h2>
               {MOCK_LEND_ASSETS.map((asset) => (
@@ -29,7 +29,7 @@ export default function LendPage() {
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
               { label: "Total Supplied", value: "$8.2B", sub: "+4.2% this week", pos: true },
               { label: "Total Borrowed", value: "$3.1B", sub: "37.8% utilization" },

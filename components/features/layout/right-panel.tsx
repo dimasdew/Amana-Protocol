@@ -27,7 +27,7 @@ const GAS = [
 
 export function RightPanel() {
   return (
-    <aside className="w-[260px] shrink-0 border-l border-white/[0.07] bg-[#121012] overflow-y-auto flex flex-col gap-5 p-4">
+    <aside className="hidden xl:flex w-[260px] shrink-0 border-l border-white/[0.07] bg-[#121012] overflow-y-auto flex-col gap-5 p-4">
       {/* Gas */}
       <section>
         <SectionTitle>Gas Tracker</SectionTitle>

@@ -12,7 +12,7 @@ export default function StakePage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h1 className="text-[22px] font-extrabold">Staking Pools</h1>
           <p className="text-[12px] text-[#A09080] mt-1">Earn rewards by staking your tokens</p>
@@ -35,7 +35,7 @@ export default function StakePage() {
             <h2 className="text-[14px] font-bold text-[#BBA890] uppercase tracking-[0.5px]">My Active Stakes</h2>
             <button className="text-[12px] font-bold text-[#C9A84C] hover:opacity-80 transition-opacity">Claim All Rewards →</button>
           </div>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {myPools.map((pool) => (
               <StakePoolCard key={pool.id} pool={pool} highlight={pool.apy >= 15} />
             ))}
@@ -45,7 +45,7 @@ export default function StakePage() {
 
       <section>
         <h2 className="text-[14px] font-bold text-[#BBA890] uppercase tracking-[0.5px] mb-3">All Pools</h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {otherPools.map((pool) => (
             <StakePoolCard key={pool.id} pool={pool} highlight={pool.apy >= 15} />
           ))}

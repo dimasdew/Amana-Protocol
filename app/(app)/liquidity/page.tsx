@@ -39,7 +39,7 @@ export default function LiquidityPage() {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h1 className="text-[22px] font-extrabold">Liquidity Pools</h1>
           <p className="text-[12px] text-[#A09080] mt-1">Provide liquidity and earn fees from every swap</p>
@@ -55,8 +55,8 @@ export default function LiquidityPage() {
           <h2 className="text-[13px] font-bold text-[#BBA890] uppercase tracking-[0.5px]">My LP Positions</h2>
           <span className="text-[11px] text-[#A09080] font-mono">Total Value: $42,840</span>
         </div>
-        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] overflow-hidden">
-          <table className="w-full border-collapse">
+        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] overflow-x-auto">
+          <table className="w-full border-collapse min-w-[700px]">
             <thead>
               <tr>
                 {["Pool","Fee Tier","My Liquidity","Unclaimed Fees","Range","APR","Actions"].map((h) => (
@@ -88,8 +88,8 @@ export default function LiquidityPage() {
             ))}
           </div>
         </div>
-        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] overflow-hidden">
-          <table className="w-full border-collapse">
+        <div className="bg-[#1C1C1E] border border-white/[0.07] rounded-[14px] overflow-x-auto">
+          <table className="w-full border-collapse min-w-[650px]">
             <thead>
               <tr>
                 {["#","Pool","TVL","Volume 24H","Fees 24H","APR",""].map((h) => (
