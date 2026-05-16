@@ -7,7 +7,7 @@ import { useSwapQuote, useTokenBalance } from "@/hooks/use-swap"
 import { TokenIcon } from "@/components/ui/token-icon"
 import { formatUSD, formatToken, cn } from "@/lib/utils"
 import { TOKENS } from "@/lib/mock-data"
-import type { SlippageTolerance } from "@/types"
+import type { SlippageTolerance, Token } from "@/types"
 
 const SLIPPAGE_OPTIONS: SlippageTolerance[] = ["0.1", "0.5", "1.0"]
 
@@ -239,7 +239,7 @@ function TokenInput({
   editable,
 }: {
   label: string
-  token: ReturnType<typeof useSwapStore>["fromToken"]
+  token: Token
   amount: string
   valueUSD?: string | null
   balance?: number

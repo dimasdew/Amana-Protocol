@@ -56,13 +56,13 @@ export const useSwapStore = create<SwapState>()(
     }),
     {
       name: "amana-swap-settings",
-      partialState: (state) => ({
+      partialize: (state: SwapState) => ({
         slippage: state.slippage,
         deadline: state.deadline,
         isExpertMode: state.isExpertMode,
         autoRouter: state.autoRouter,
       }),
-    } as Parameters<typeof persist>[1]
+    }
   )
 )
 
