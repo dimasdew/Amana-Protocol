@@ -1,10 +1,16 @@
+"use client"
+
 import { StatCard } from "@/components/ui/stat-card"
 import { SwapPanel } from "@/components/features/swap/swap-panel"
 import { PriceChart } from "@/components/features/swap/price-chart"
+import { OracleStrip } from "@/components/ui/oracle-badge"
 
 export default function SwapPage() {
   return (
     <div className="space-y-5">
+      {/* Chainlink Oracle Prices */}
+      <OracleStrip tokens={["ETH", "BTC", "SOL", "BNB", "LINK"]} />
+
       {/* Stats row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <StatCard label="24h Volume" value="$4.2B" sub="+12.4% vs yesterday" subPositive={true} />

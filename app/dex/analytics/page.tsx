@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { MOCK_POOLS, TOKENS } from "@/lib/mock-data"
 import { formatUSD, cn } from "@/lib/utils"
+import { OracleStrip } from "@/components/ui/oracle-badge"
 import {
   AreaChart,
   Area,
@@ -64,6 +65,9 @@ export default function AnalyticsPage() {
           Real-time overview of Amana Protocol performance
         </p>
       </div>
+
+      {/* Chainlink Live Prices */}
+      <OracleStrip tokens={["ETH", "BTC", "SOL", "BNB", "LINK", "MATIC"]} />
 
       {/* Stats grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
