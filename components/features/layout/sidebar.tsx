@@ -12,6 +12,7 @@ import {
   Wallet,
   Settings,
   Shield,
+  X,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -97,6 +98,9 @@ const ACCOUNT_ITEMS = [
   },
 ]
 
+const ALL_ITEMS = [...MAIN_ITEMS, ...SECONDARY_ITEMS, ...ACCOUNT_ITEMS]
+
+/** Desktop sidebar (lg+) */
 export function Sidebar() {
   const pathname = usePathname()
 
@@ -137,6 +141,128 @@ export function Sidebar() {
   )
 }
 
+/** Mobile drawer (controlled by navbar) */
+export function MobileSidebar({
+  open,
+  onClose,
+}: {
+  open: boolean
+  onClose: () => void
+}) {
+  const pathname = usePathname()
+
+  return (
+    <>
+      {/* Overlay */}
+      {open && (
+        <div
+          className="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+          onClick={onClose}
+        />
+      )}
+
+      {/* Drawer */}
+      <div
+        className={cn(
+          "lg:hidden fixed top-0 left-0 z-50 h-full w-[280px] bg-[var(--color-bg-primary)] border-r border-[var(--color-border-subtle)] flex flex-col p-3 overflow-y-auto transition-transform duration-300",
+          open ? "translate-x-0" : "-translate-x-full"
+        )}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-[10px] py-2 mb-2">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-[8px] bg-gradient-to-br from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] flex items-center justify-center text-xs font-bold text-black">
+              ⬡
+            </div>
+            <span className="text-[15px] font-bold">Amana</span>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 flex items-center justify-center rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)] transition-colors"
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        <SidebarSection label="Trade" />
+        <div className="flex flex-col gap-[2px]">
+          {MAIN_ITEMS.map((item) => (
+            <SidebarItem key={item.href} item={item} pathname={pathname} onClick={onClose} />
+          ))}
+        </div>
+
+        <SidebarSection label="Insights" />
+        <div className="flex flex-col gap-[2px]">
+          {SECONDARY_ITEMS.map((item) => (
+            <SidebarItem key={item.href} item={item} pathname={pathname} onClick={onClose} />
+          ))}
+        </div>
+
+        <SidebarSection label="Account" />
+        <div className="flex flex-col gap-[2px]">
+          {ACCOUNT_ITEMS.map((item) => (
+            <SidebarItem key={item.href} item={item} pathname={pathname} onClick={onClose} />
+          ))}
+        </div>
+
+        <div className="mt-auto pt-4">
+          <div className="flex items-center gap-2 px-[10px] py-[10px] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-lg">
+            <Shield size={12} className="text-[var(--color-accent-gold)]" />
+            <div>
+              <p className="text-[10px] font-bold text-[var(--color-text-secondary)]">Amana Protocol</p>
+              <p className="text-[9px] text-[var(--color-text-muted)] font-mono">v1.0.0 · Mainnet</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+/** Bottom nav — mobile only (5 primary items) */
+export function BottomNav() {
+  const pathname = usePathname()
+  const items = MAIN_ITEMS.slice(0, 4)
+
+  return (
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 h-16 bg-[var(--color-bg-primary)] border-t border-[var(--color-border-subtle)] flex items-center px-2 pb-safe transition-colors">
+      {items.map((item) => {
+        const isActive =
+          item.href === "/dex" ? pathname === "/dex" : pathname.startsWith(item.href)
+        const Icon = item.icon
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={cn(
+              "flex-1 flex flex-col items-center justify-center gap-[3px] py-2 rounded-lg transition-colors",
+              isActive
+                ? "text-[var(--color-accent-gold)]"
+                : "text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
+            )}
+          >
+            <Icon size={18} />
+            <span className="text-[10px] font-semibold">{item.label}</span>
+          </Link>
+        )
+      })}
+      {/* More (Portfolio) */}
+      <Link
+        href="/dex/portfolio"
+        className={cn(
+          "flex-1 flex flex-col items-center justify-center gap-[3px] py-2 rounded-lg transition-colors",
+          pathname === "/dex/portfolio"
+            ? "text-[var(--color-accent-gold)]"
+            : "text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
+        )}
+      >
+        <Wallet size={18} />
+        <span className="text-[10px] font-semibold">Portfolio</span>
+      </Link>
+    </nav>
+  )
+}
+
 function SidebarSection({ label }: { label: string }) {
   return (
     <p className="text-[10px] font-bold text-[var(--color-text-muted)] tracking-[1.2px] uppercase px-[10px] pt-3 pb-1 mt-2 first:mt-0">
@@ -148,9 +274,11 @@ function SidebarSection({ label }: { label: string }) {
 function SidebarItem({
   item,
   pathname,
+  onClick,
 }: {
-  item: (typeof MAIN_ITEMS)[0]
+  item: (typeof ALL_ITEMS)[0]
   pathname: string
+  onClick?: () => void
 }) {
   const isActive =
     item.href === "/dex" ? pathname === "/dex" : pathname.startsWith(item.href)
@@ -159,6 +287,7 @@ function SidebarItem({
   return (
     <Link
       href={item.href}
+      onClick={onClick}
       className={cn(
         "flex items-center gap-[10px] px-[10px] py-[9px] rounded-lg transition-all duration-150 group",
         isActive

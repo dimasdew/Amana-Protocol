@@ -165,7 +165,7 @@ export function PriceChart() {
       </ResponsiveContainer>
 
       {/* Stats row */}
-      <div className="grid grid-cols-4 gap-3 mt-4 pt-4 border-t border-[var(--color-border-subtle)]">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 pt-4 border-t border-[var(--color-border-subtle)]">
         {[
           { label: "24h High", value: formatUSD(PAIR_STATS.high) },
           { label: "24h Low", value: formatUSD(PAIR_STATS.low) },

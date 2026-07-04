@@ -154,7 +154,8 @@ export default function TransactionsPage() {
       </div>
 
       {/* Filters */}
-      <div className="flex gap-[2px] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] p-[3px] w-fit">
+      <div className="overflow-x-auto -mx-1 px-1">
+      <div className="flex gap-[2px] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] p-[3px] w-fit min-w-max">
         {TX_TYPES.map((t) => (
           <button
             key={t.value}
@@ -169,6 +170,7 @@ export default function TransactionsPage() {
             {t.label}
           </button>
         ))}
+      </div>
       </div>
 
       {/* Transactions table */}

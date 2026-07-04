@@ -20,7 +20,7 @@ export default function SwapPage() {
       </div>
 
       {/* Swap layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-5 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-[min(400px,100%)_1fr] gap-5 items-start">
         <SwapPanel />
         <PriceChart />
       </div>

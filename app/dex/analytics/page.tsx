@@ -94,7 +94,7 @@ export default function AnalyticsPage() {
 
       {/* TVL Chart */}
       <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 transition-colors">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div>
             <h2 className="text-[14px] font-bold">Total Value Locked</h2>
             <p className="text-[22px] font-bold font-mono mt-1">$18.7B</p>

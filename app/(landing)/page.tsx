@@ -20,17 +20,23 @@ export default function LandingPage() {
     )
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el))
 
-    // Card mousemove glow effect
+    // Card mousemove glow effect — store handlers for cleanup
+    const handlers: Array<{ card: HTMLElement; fn: (e: MouseEvent) => void }> = []
     document.querySelectorAll(".feat-card").forEach((c) => {
       const card = c as HTMLElement
-      card.addEventListener("mousemove", (e: MouseEvent) => {
+      const fn = (e: MouseEvent) => {
         const r = card.getBoundingClientRect()
         card.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100).toFixed(1) + "%")
         card.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100).toFixed(1) + "%")
-      })
+      }
+      card.addEventListener("mousemove", fn)
+      handlers.push({ card, fn })
     })
 
-    return () => io.disconnect()
+    return () => {
+      io.disconnect()
+      handlers.forEach(({ card, fn }) => card.removeEventListener("mousemove", fn))
+    }
   }, [])
 
   return (
@@ -75,7 +81,7 @@ export default function LandingPage() {
         </div>
         <div className="feat-grid reveal">
           {/* Smart Swap */}
-          <div className="feat-card wide" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "center" }}>
+          <div className="feat-card wide feat-card-wide-grid">
             <div>
               <div className="feat-icon fi-green">⇄</div>
               <div className="feat-title">Smart Swap</div>
@@ -139,7 +145,7 @@ export default function LandingPage() {
           </div>
 
           {/* Liquidity */}
-          <div className="feat-card wide" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "center" }}>
+          <div className="feat-card wide feat-card-wide-grid">
             <div>
               <div className="feat-icon fi-purple">◉</div>
               <div className="feat-title">Liquidity Provision</div>

@@ -32,14 +32,17 @@ export function ActionModal({
   const handleAction = () => {
     if (!amount || parseFloat(amount) <= 0) return
     setState("pending")
-    setTimeout(() => {
+    // ponytail: use useEffect+useRef for robust cleanup if modal gets unmounted mid-pending
+    const t1 = setTimeout(() => {
       setState("success")
-      setTimeout(() => {
+      const t2 = setTimeout(() => {
         setState("input")
         setAmount("")
         onClose()
       }, 1500)
+      return () => clearTimeout(t2)
     }, 2000)
+    return () => clearTimeout(t1)
   }
 
   const handleClose = () => {
