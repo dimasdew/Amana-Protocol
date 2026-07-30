@@ -1,17 +1,17 @@
 import type { Metadata } from "next"
-import { Syne, DM_Mono } from "next/font/google"
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import { Providers } from "@/components/providers"
 import "./globals.css"
 
-const syne = Syne({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-syne",
 })
 
-const dmMono = DM_Mono({
+const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "700"],
   variable: "--font-dm-mono",
 })
 
@@ -34,7 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${syne.variable} ${dmMono.variable} font-sans antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} font-sans antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>

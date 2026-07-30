@@ -4,10 +4,19 @@ import { StatCard } from "@/components/ui/stat-card"
 import { SwapPanel } from "@/components/features/swap/swap-panel"
 import { PriceChart } from "@/components/features/swap/price-chart"
 import { OracleStrip } from "@/components/ui/oracle-badge"
+import { DemoBadge } from "@/components/ui/demo-badge"
 
 export default function SwapPage() {
   return (
     <div className="space-y-5">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <p className="text-[12px] text-[var(--color-text-muted)]">
+          Swap quotes use live Chainlink oracle prices. Trades are previewed client-side, not
+          settled on-chain.
+        </p>
+        <DemoBadge variant="simulated" />
+      </div>
+
       {/* Chainlink Oracle Prices */}
       <OracleStrip tokens={["ETH", "BTC", "SOL", "BNB", "LINK"]} />
 

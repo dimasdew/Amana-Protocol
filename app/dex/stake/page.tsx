@@ -3,6 +3,7 @@
 import { MOCK_STAKE_POOLS } from "@/lib/mock-data"
 import { StakePoolCard } from "@/components/features/stake/stake-pool-card"
 import { useToast } from "@/components/ui/toast"
+import { DemoBadge } from "@/components/ui/demo-badge"
 
 export default function StakePage() {
   const { toast } = useToast()
@@ -13,8 +14,11 @@ export default function StakePage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-[22px] font-extrabold">Staking Pools</h1>
-          <p className="text-[12px] text-[var(--color-text-muted)] mt-1">Earn rewards by staking your tokens</p>
+          <div className="flex items-center gap-2 flex-wrap">
+            <h1 className="text-[22px] font-extrabold">Staking Pools</h1>
+            <DemoBadge variant="simulated" />
+          </div>
+          <p className="text-[12px] text-[var(--color-text-muted)] mt-1">Earn rewards by staking your tokens. Sample pools and flows for UX demo.</p>
         </div>
         <div className="flex gap-3">
           <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-lg px-4 py-2 text-[12px] transition-colors">

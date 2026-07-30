@@ -6,6 +6,7 @@ import { MOCK_POOLS } from "@/lib/mock-data"
 import { PoolRow } from "@/components/features/liquidity/pool-row"
 import { TokenPair } from "@/components/ui/token-icon"
 import { useToast } from "@/components/ui/toast"
+import { DemoBadge } from "@/components/ui/demo-badge"
 import { formatUSD, feeTierToPercent, cn } from "@/lib/utils"
 
 const MY_POSITIONS = [
@@ -43,8 +44,11 @@ export default function LiquidityPage() {
     <div className="space-y-5">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-[22px] font-extrabold">Liquidity Pools</h1>
-          <p className="text-[12px] text-[var(--color-text-muted)] mt-1">Provide liquidity and earn fees from every swap</p>
+          <div className="flex items-center gap-2 flex-wrap">
+            <h1 className="text-[22px] font-extrabold">Liquidity Pools</h1>
+            <DemoBadge variant="simulated" />
+          </div>
+          <p className="text-[12px] text-[var(--color-text-muted)] mt-1">Provide liquidity and earn fees from every swap. Sample positions for UX demo.</p>
         </div>
         <button
           onClick={() => toast("info", "New Position", "Select a pool and price range to provide liquidity")}

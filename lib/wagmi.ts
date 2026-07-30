@@ -1,10 +1,10 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit"
-import { mainnet, polygon, optimism, arbitrum, base, sepolia } from "wagmi/chains"
+import { mainnet, polygon, optimism, arbitrum, base, sepolia, baseSepolia } from "wagmi/chains"
 
 export const wagmiConfig = getDefaultConfig({
   appName: "Amana",
   projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? "YOUR_PROJECT_ID",
-  chains: [mainnet, polygon, optimism, arbitrum, base, sepolia],
+  chains: [mainnet, polygon, optimism, arbitrum, base, sepolia, baseSepolia],
   ssr: true,
 })
 
