@@ -49,7 +49,7 @@ export default function LandingPage() {
         <div className="orb orb-1" />
         <div className="orb orb-2" />
         <div className="orb orb-3" />
-        <div className="hero-badge">Live demo · Base Sepolia testnet</div>
+        <div className="hero-badge">Live demo - Base Sepolia testnet</div>
         <h1 className="hero-title">Trade without<br /><span className="line2">compromise.</span></h1>
         <p className="hero-sub">
           Amana Protocol is a next-generation decentralized exchange — swap, stake, lend, and provide
@@ -289,7 +289,7 @@ export default function LandingPage() {
             </Link>
             <a href="https://github.com/dimasdew/Amana-Protocol" target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ fontSize: 16, padding: "16px 36px" }}>View on GitHub</a>
           </div>
-          <p style={{ marginTop: 20, fontSize: 12, color: "var(--text3)", fontFamily: "var(--mono)" }}>Non-custodial · Open source · Testnet demo</p>
+          <p style={{ marginTop: 20, fontSize: 12, color: "var(--text3)", fontFamily: "var(--mono)" }}>Non-custodial - Open source - Testnet demo</p>
         </div>
       </section>
 
