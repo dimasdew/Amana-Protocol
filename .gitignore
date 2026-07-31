@@ -35,3 +35,10 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Hardhat / contracts build output
+contracts/artifacts/
+contracts/cache/
+contracts/typechain-types/
+contracts/node_modules/
+.env*

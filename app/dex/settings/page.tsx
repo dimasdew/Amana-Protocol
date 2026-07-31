@@ -238,7 +238,7 @@ export default function SettingsPage() {
       {/* Version info */}
       <div className="text-center pt-4 pb-8">
         <p className="text-[10px] text-[var(--color-text-muted)] font-mono">
-          Amana Protocol v1.0.0 · Ethereum Mainnet · Built with ♦
+          Amana Protocol v1.0.0 · Base Sepolia testnet · Built with ♦
         </p>
       </div>
     </div>

@@ -49,7 +49,7 @@ export default function LandingPage() {
         <div className="orb orb-1" />
         <div className="orb orb-2" />
         <div className="orb orb-3" />
-        <div className="hero-badge"><span className="badge-dot" />Live on Ethereum Mainnet</div>
+        <div className="hero-badge"><span className="badge-dot" />Live demo · Base Sepolia testnet</div>
         <h1 className="hero-title">Trade without<br /><span className="line2">compromise.</span></h1>
         <p className="hero-sub">
           Amana Protocol is a next-generation decentralized exchange — swap, stake, lend, and provide
@@ -65,10 +65,10 @@ export default function LandingPage() {
           <a href="#features" className="btn-secondary">Explore Features</a>
         </div>
         <div className="hero-stats">
-          <div className="hstat"><div className="hstat-val" style={{ color: "var(--green)" }}>$18.7B</div><div className="hstat-label">Total Liquidity</div></div>
-          <div className="hstat"><div className="hstat-val">$4.2B</div><div className="hstat-label">24h Volume</div></div>
-          <div className="hstat"><div className="hstat-val">3,842</div><div className="hstat-label">Trading Pairs</div></div>
-          <div className="hstat"><div className="hstat-val" style={{ color: "var(--green)" }}>0.04%</div><div className="hstat-label">Min Price Impact</div></div>
+          <div className="hstat"><div className="hstat-val" style={{ color: "var(--green)" }}>4</div><div className="hstat-label">Core Modules</div></div>
+          <div className="hstat"><div className="hstat-val">12</div><div className="hstat-label">Live Chainlink Feeds</div></div>
+          <div className="hstat"><div className="hstat-val">On-chain</div><div className="hstat-label">Lending on Base Sepolia</div></div>
+          <div className="hstat"><div className="hstat-val" style={{ color: "var(--green)" }}>MIT</div><div className="hstat-label">Open Source</div></div>
         </div>
       </section>
 
@@ -289,7 +289,7 @@ export default function LandingPage() {
             </Link>
             <a href="https://github.com/dimasdew/Amana-Protocol" target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ fontSize: 16, padding: "16px 36px" }}>View on GitHub</a>
           </div>
-          <p style={{ marginTop: 20, fontSize: 12, color: "var(--text3)", fontFamily: "var(--mono)" }}>Non-custodial · Open source · Audited</p>
+          <p style={{ marginTop: 20, fontSize: 12, color: "var(--text3)", fontFamily: "var(--mono)" }}>Non-custodial · Open source · Testnet demo</p>
         </div>
       </section>
 

@@ -133,7 +133,7 @@ export function Sidebar() {
           <Shield size={12} className="text-[var(--color-accent-gold)]" />
           <div>
             <p className="text-[10px] font-bold text-[var(--color-text-secondary)]">Amana Protocol</p>
-            <p className="text-[9px] text-[var(--color-text-muted)] font-mono">v1.0.0 · Mainnet</p>
+            <p className="text-[9px] text-[var(--color-text-muted)] font-mono">v1.0.0 · Base Sepolia</p>
           </div>
         </div>
       </div>
@@ -210,7 +210,7 @@ export function MobileSidebar({
             <Shield size={12} className="text-[var(--color-accent-gold)]" />
             <div>
               <p className="text-[10px] font-bold text-[var(--color-text-secondary)]">Amana Protocol</p>
-              <p className="text-[9px] text-[var(--color-text-muted)] font-mono">v1.0.0 · Mainnet</p>
+              <p className="text-[9px] text-[var(--color-text-muted)] font-mono">v1.0.0 · Base Sepolia</p>
             </div>
           </div>
         </div>
