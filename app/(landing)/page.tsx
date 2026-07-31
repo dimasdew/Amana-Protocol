@@ -49,7 +49,7 @@ export default function LandingPage() {
         <div className="orb orb-1" />
         <div className="orb orb-2" />
         <div className="orb orb-3" />
-        <div className="hero-badge"><span className="badge-dot" />Live demo · Base Sepolia testnet</div>
+        <div className="hero-badge">Live demo · Base Sepolia testnet</div>
         <h1 className="hero-title">Trade without<br /><span className="line2">compromise.</span></h1>
         <p className="hero-sub">
           Amana Protocol is a next-generation decentralized exchange — swap, stake, lend, and provide

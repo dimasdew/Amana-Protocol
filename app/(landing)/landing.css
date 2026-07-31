@@ -80,7 +80,7 @@
   letter-spacing: .5px; margin-bottom: 28px; font-family: var(--mono);
   animation: fadeUp .7s ease both;
 }
-.badge-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+
 .hero-title {
   font-size: clamp(52px, 8vw, 88px); font-weight: 800;
   letter-spacing: -3px; line-height: 1; margin-bottom: 24px;
