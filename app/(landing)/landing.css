@@ -80,7 +80,7 @@
   letter-spacing: .5px; margin-bottom: 28px; font-family: var(--mono);
   animation: fadeUp .7s ease both;
 }
-.badge-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+.badge-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
 .hero-title {
   font-size: clamp(52px, 8vw, 88px); font-weight: 800;
   letter-spacing: -3px; line-height: 1; margin-bottom: 24px;
@@ -233,7 +233,6 @@
 
 /* ── Animations ── */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
 @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 .float-anim { animation: floatY 4s ease-in-out infinite; }
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
