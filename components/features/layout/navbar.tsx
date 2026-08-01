@@ -44,7 +44,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 h-14 flex items-center justify-between px-4 md:px-6 border-b border-[var(--color-border-subtle)] bg-[var(--color-bg-primary)]/95 backdrop-blur-md transition-colors">
+      <header className="sticky top-0 z-50 h-16 flex items-center justify-between px-4 md:px-6 border-b border-[var(--color-border-subtle)] bg-[var(--color-bg-primary)]/95 backdrop-blur-md transition-colors">
         {/* Hamburger — opens full sidebar drawer on mobile/tablet */}
         <button
           onClick={() => setDrawerOpen(!drawerOpen)}

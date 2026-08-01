@@ -52,6 +52,8 @@
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
     font-family: var(--font-syne), sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 

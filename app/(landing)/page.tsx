@@ -297,6 +297,7 @@ function MobileNav() {
 
   return (
     <nav className="landing-nav">
+      <div className="landing-nav-inner">
       <Link href="/" className="nav-logo">
         <div className="logo-mark">⬡</div>
         <span className="logo-text">Amana<span>Protocol</span></span>
@@ -318,6 +319,7 @@ function MobileNav() {
         <span className={`hamburger-line ${open ? "hl-open-2" : ""}`} />
         <span className={`hamburger-line ${open ? "hl-open-3" : ""}`} />
       </button>
+      </div>
 
       {/* Mobile menu */}
       {open && (
