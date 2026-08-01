@@ -171,7 +171,7 @@ export function MobileSidebar({
         {/* Header */}
         <div className="flex items-center justify-between px-[10px] py-2 mb-2">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-[8px] bg-gradient-to-br from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] flex items-center justify-center text-xs font-bold text-black">
+            <div className="w-7 h-7 rounded-sm bg-gradient-to-br from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] flex items-center justify-center text-xs font-bold text-black">
               ⬡
             </div>
             <span className="text-[15px] font-bold">Amana</span>
@@ -297,7 +297,7 @@ function SidebarItem({
     >
       <span
         className={cn(
-          "w-7 h-7 rounded-[7px] flex items-center justify-center shrink-0 transition-colors",
+          "w-7 h-7 rounded-sm flex items-center justify-center shrink-0 transition-colors",
           isActive ? "bg-[var(--color-accent-gold)]/15 text-[var(--color-accent-gold)]" : cn(item.bg, item.color)
         )}
       >

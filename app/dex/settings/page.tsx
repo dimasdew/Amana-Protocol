@@ -255,7 +255,7 @@ function SettingsSection({
   children: React.ReactNode
 }) {
   return (
-    <section className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-5 transition-colors">
+    <section className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-5 transition-colors">
       <div className="flex items-center gap-2 mb-4">
         <Icon size={14} className="text-[var(--color-accent-gold)]" />
         <h2 className="text-[14px] font-bold">{title}</h2>

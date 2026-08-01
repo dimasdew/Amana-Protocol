@@ -28,7 +28,7 @@ export function StakePoolCard({ pool, highlight }: StakePoolCardProps) {
   return (
     <div
       className={cn(
-        "bg-[var(--color-bg-secondary)] border rounded-[14px] p-4 transition-all duration-150 cursor-pointer card-hover",
+        "bg-[var(--color-bg-secondary)] border rounded-2xl p-4 transition-all duration-150 cursor-pointer card-hover",
         highlight
           ? "border-[var(--color-accent-gold)]/20"
           : "border-[var(--color-border-subtle)] hover:border-[var(--color-border-default)]"

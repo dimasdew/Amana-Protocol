@@ -237,7 +237,7 @@ export function SwapPanel() {
             }
           }}
           className={cn(
-            "w-full mt-4 py-[14px] rounded-[10px] text-[15px] font-bold tracking-[0.2px] transition-all duration-150",
+            "w-full mt-4 py-[14px] rounded-md text-[15px] font-bold tracking-[0.2px] transition-all duration-150",
             fromAmount && parseFloat(fromAmount) > 0
               ? "bg-gradient-to-r from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] text-black hover:opacity-90 hover:-translate-y-[1px]"
               : "bg-[var(--color-bg-elevated)] text-[var(--color-text-muted)] cursor-not-allowed"

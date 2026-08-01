@@ -9,25 +9,23 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Bridged to the CSS custom properties in app/globals.css so utilities and
+      // inline styles resolve to the same value in both themes.
       colors: {
         bg: {
-          primary: "#121012",
-          secondary: "#1C1C1E",
-          tertiary: "#252527",
-          elevated: "#2E2E30",
+          primary: "var(--color-bg-primary)",
+          secondary: "var(--color-bg-secondary)",
+          tertiary: "var(--color-bg-tertiary)",
+          elevated: "var(--color-bg-elevated)",
         },
         accent: {
-          green: "#C9A84C",
-          blue: "#800020",
-          orange: "#C9A84C",
-          purple: "#800020",
-          yellow: "#C9A84C",
-          red: "#800020",
+          gold: "var(--color-accent-gold)",
+          "gold-dark": "var(--color-accent-gold-dark)",
+          maroon: "var(--color-accent-maroon)",
         },
         border: {
-          subtle: "rgba(255,255,255,0.07)",
-          default: "rgba(255,255,255,0.12)",
-          strong: "rgba(255,255,255,0.2)",
+          subtle: "var(--color-border-subtle)",
+          default: "var(--color-border-default)",
         },
       },
       fontFamily: {
@@ -35,19 +33,20 @@ module.exports = {
         mono: ["var(--font-dm-mono)", "monospace"],
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        // Shared scale: 8 / 12 / 16. Nothing else.
+        sm: "8px",
+        md: "12px",
+        lg: "12px",
+        xl: "12px",
+        "2xl": "16px",
+      },
+      transitionDuration: {
+        fast: "150ms",
+        base: "250ms",
+        slow: "400ms",
       },
       animation: {
         "pulse-slow": "pulse 3s ease-in-out infinite",
-        "ticker": "ticker 30s linear infinite",
-      },
-      keyframes: {
-        ticker: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
       },
     },
   },

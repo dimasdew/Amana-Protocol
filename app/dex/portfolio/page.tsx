@@ -63,7 +63,7 @@ export default function PortfolioPage() {
         <h2 className="text-[14px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.5px] mb-3">
           Token Holdings
         </h2>
-        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] overflow-x-auto transition-colors">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl overflow-x-auto transition-colors">
           <table className="w-full border-collapse min-w-[600px]">
             <thead>
               <tr>
@@ -118,7 +118,7 @@ export default function PortfolioPage() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {STAKING_POSITIONS.map((pos) => (
-            <div key={pos.token.symbol} className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 transition-colors">
+            <div key={pos.token.symbol} className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-4 transition-colors">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-8 h-8 rounded-full bg-[var(--color-bg-elevated)] flex items-center justify-center text-[11px] font-bold">
                   {pos.token.symbol.slice(0, 2)}
@@ -165,7 +165,7 @@ export default function PortfolioPage() {
           <h2 className="text-[14px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.5px] mb-3">
             Lending Positions
           </h2>
-          <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 space-y-3 transition-colors">
+          <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-4 space-y-3 transition-colors">
             {LENDING_POSITIONS.map((pos, i) => (
               <div key={i} className="flex items-center justify-between py-2 border-b border-[var(--color-border-subtle)] last:border-0">
                 <div className="flex items-center gap-2">
@@ -192,7 +192,7 @@ export default function PortfolioPage() {
           <h2 className="text-[14px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.5px] mb-3">
             LP Positions
           </h2>
-          <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 space-y-3 transition-colors">
+          <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-4 space-y-3 transition-colors">
             {LP_POSITIONS.map((pos) => (
               <div key={pos.pair} className="flex items-center justify-between py-2 border-b border-[var(--color-border-subtle)] last:border-0">
                 <div>
@@ -232,7 +232,7 @@ function SummaryCard({
   positive: boolean
 }) {
   return (
-    <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] px-4 py-3 transition-colors">
+    <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-md px-4 py-3 transition-colors">
       <div className="flex items-center gap-2 mb-2">
         <Icon size={14} className="text-[var(--color-accent-gold)]" />
         <p className="text-[10px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.8px]">{label}</p>

@@ -52,7 +52,7 @@ export default function StakePage() {
           {otherPools.map((pool) => (
             <StakePoolCard key={pool.id} pool={pool} highlight={pool.apy >= 15} />
           ))}
-          <div className="bg-[var(--color-bg-secondary)] border border-dashed border-[var(--color-border-default)] rounded-[14px] p-4 flex flex-col items-center justify-center min-h-[200px] gap-2 cursor-pointer hover:border-[var(--color-text-muted)] transition-colors">
+          <div className="bg-[var(--color-bg-secondary)] border border-dashed border-[var(--color-border-default)] rounded-2xl p-4 flex flex-col items-center justify-center min-h-[200px] gap-2 cursor-pointer hover:border-[var(--color-text-muted)] transition-colors">
             <span className="text-[28px] text-[var(--color-text-muted)]">+</span>
             <p className="text-[13px] font-bold text-[var(--color-text-secondary)]">New Pools Coming</p>
             <p className="text-[11px] text-[var(--color-text-muted)]">AVAX, ARB, OP soon</p>

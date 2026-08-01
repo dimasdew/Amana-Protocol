@@ -45,7 +45,7 @@ export function RightPanel() {
       {/* Gas */}
       <section>
         <SectionTitle>Gas Tracker</SectionTitle>
-        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] p-3">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-md p-3">
           <div className="flex justify-between mb-3">
             {GAS.map((g) => (
               <div key={g.label}>
@@ -74,7 +74,7 @@ export function RightPanel() {
       {/* Portfolio */}
       <section>
         <SectionTitle>Portfolio</SectionTitle>
-        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] px-3 py-3 mb-2">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-md px-3 py-3 mb-2">
           <div className="flex items-center justify-between">
             <div className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider">Total Value</div>
             <div className="flex items-center gap-1 text-[var(--color-accent-gold)]">
@@ -128,7 +128,7 @@ export function RightPanel() {
           {ACTIVITY.map((item, i) => (
             <div
               key={i}
-              className="flex items-center gap-[10px] px-[10px] py-2 bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[9px]"
+              className="flex items-center gap-[10px] px-[10px] py-2 bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-sm"
             >
               <span className={cn("w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-bold shrink-0", item.color)}>
                 {item.icon}

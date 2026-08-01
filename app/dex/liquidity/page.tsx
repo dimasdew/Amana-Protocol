@@ -64,7 +64,7 @@ export default function LiquidityPage() {
           <h2 className="text-[13px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.5px]">My LP Positions</h2>
           <span className="text-[11px] text-[var(--color-text-muted)] font-mono">Total Value: $42,840</span>
         </div>
-        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] overflow-x-auto transition-colors">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl overflow-x-auto transition-colors">
           <table className="w-full border-collapse min-w-[700px]">
             <thead>
               <tr>
@@ -97,7 +97,7 @@ export default function LiquidityPage() {
             ))}
           </div>
         </div>
-        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] overflow-x-auto transition-colors">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl overflow-x-auto transition-colors">
           <table className="w-full border-collapse min-w-[650px]">
             <thead>
               <tr>

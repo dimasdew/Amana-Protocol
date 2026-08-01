@@ -12,7 +12,7 @@ export function StatCard({ label, value, sub, subPositive, className }: StatCard
   return (
     <div
       className={cn(
-        "bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] px-4 py-3 transition-colors",
+        "bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-md px-4 py-3 transition-colors",
         className
       )}
     >

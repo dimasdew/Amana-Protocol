@@ -74,7 +74,7 @@ export default function AnalyticsPage() {
         {PROTOCOL_STATS.map((stat) => (
           <div
             key={stat.label}
-            className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] px-3 py-3 transition-colors"
+            className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-md px-3 py-3 transition-colors"
           >
             <p className="text-[10px] font-bold text-[var(--color-text-muted)] uppercase tracking-[0.8px]">
               {stat.label}
@@ -93,7 +93,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* TVL Chart */}
-      <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 transition-colors">
+      <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-4 transition-colors">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div>
             <h2 className="text-[14px] font-bold">Total Value Locked</h2>
@@ -156,7 +156,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Volume chart */}
-      <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 transition-colors">
+      <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-4 transition-colors">
         <h2 className="text-[14px] font-bold mb-4">Volume (24H)</h2>
         <ResponsiveContainer width="100%" height={140}>
           <BarChart data={chartData} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
@@ -186,7 +186,7 @@ export default function AnalyticsPage() {
       {/* Top Tokens + Top Pools */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Top Tokens */}
-        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 transition-colors">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-4 transition-colors">
           <h2 className="text-[13px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.5px] mb-3">
             Top Tokens by TVL
           </h2>
@@ -240,7 +240,7 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Top Pools */}
-        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 transition-colors">
+        <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-4 transition-colors">
           <h2 className="text-[13px] font-bold text-[var(--color-text-secondary)] uppercase tracking-[0.5px] mb-3">
             Top Pools by APR
           </h2>

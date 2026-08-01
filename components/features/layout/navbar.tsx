@@ -56,7 +56,7 @@ export function Navbar() {
 
         {/* Logo */}
         <Link href="/dex" className="flex items-center gap-[10px] shrink-0">
-          <div className="w-8 h-8 rounded-[10px] bg-gradient-to-br from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] flex items-center justify-center text-sm font-bold text-black shadow-lg shadow-[var(--color-accent-gold)]/10">
+          <div className="w-8 h-8 rounded-md bg-gradient-to-br from-[var(--color-accent-gold)] to-[var(--color-accent-gold-dark)] flex items-center justify-center text-sm font-bold text-black shadow-lg shadow-[var(--color-accent-gold)]/10">
             ⬡
           </div>
           <div className="hidden sm:flex flex-col">
@@ -70,7 +70,7 @@ export function Navbar() {
         </Link>
 
         {/* Center tabs — md+ only */}
-        <nav className="hidden md:flex gap-[2px] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] p-[3px]">
+        <nav className="hidden md:flex gap-[2px] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-md p-[3px]">
           {NAV_TABS.map((tab) => {
             const isActive =
               tab.href === "/dex" ? pathname === "/dex" : pathname.startsWith(tab.href)
@@ -79,7 +79,7 @@ export function Navbar() {
                 key={tab.href}
                 href={tab.href}
                 className={cn(
-                  "px-4 py-[6px] rounded-[7px] text-[12px] font-semibold transition-all duration-150 tracking-[0.3px]",
+                  "px-4 py-[6px] rounded-sm text-[12px] font-semibold transition-all duration-150 tracking-[0.3px]",
                   isActive
                     ? "bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] shadow-sm"
                     : "text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"

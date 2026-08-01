@@ -24,7 +24,7 @@ export default function LendPage() {
       <div className="grid grid-cols-1 xl:grid-cols-[1fr_340px] gap-4 items-start">
         <div className="space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 transition-colors">
+            <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-4 transition-colors">
               <h2 className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[1px] mb-3">
                 Supply Markets
               </h2>
@@ -32,7 +32,7 @@ export default function LendPage() {
                 <LendMarketRow key={asset.key} asset={asset} mode="supply" />
               ))}
             </div>
-            <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4 transition-colors">
+            <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-4 transition-colors">
               <h2 className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[1px] mb-3">
                 Borrow Markets
               </h2>
@@ -42,7 +42,7 @@ export default function LendPage() {
             </div>
           </div>
 
-          <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] p-4">
+          <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl p-4">
             <h2 className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-[1px] mb-2">
               How this works
             </h2>

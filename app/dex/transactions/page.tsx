@@ -155,13 +155,13 @@ export default function TransactionsPage() {
 
       {/* Filters */}
       <div className="overflow-x-auto -mx-1 px-1">
-      <div className="flex gap-[2px] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[10px] p-[3px] w-fit min-w-max">
+      <div className="flex gap-[2px] bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-md p-[3px] w-fit min-w-max">
         {TX_TYPES.map((t) => (
           <button
             key={t.value}
             onClick={() => setFilter(t.value)}
             className={cn(
-              "px-4 py-[6px] rounded-[7px] text-[12px] font-semibold transition-all",
+              "px-4 py-[6px] rounded-sm text-[12px] font-semibold transition-all",
               filter === t.value
                 ? "bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] shadow-sm"
                 : "text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"
@@ -174,7 +174,7 @@ export default function TransactionsPage() {
       </div>
 
       {/* Transactions table */}
-      <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-[14px] overflow-x-auto transition-colors">
+      <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border-subtle)] rounded-2xl overflow-x-auto transition-colors">
         <table className="w-full border-collapse min-w-[650px]">
           <thead>
             <tr>
