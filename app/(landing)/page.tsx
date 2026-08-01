@@ -68,7 +68,6 @@ export default function LandingPage() {
           <div className="hstat"><div className="hstat-val" style={{ color: "var(--green)" }}>4</div><div className="hstat-label">Core Modules</div></div>
           <div className="hstat"><div className="hstat-val">12</div><div className="hstat-label">Live Chainlink Feeds</div></div>
           <div className="hstat"><div className="hstat-val">On-chain</div><div className="hstat-label">Lending on Base Sepolia</div></div>
-          <div className="hstat"><div className="hstat-val" style={{ color: "var(--green)" }}>MIT</div><div className="hstat-label">Open Source</div></div>
         </div>
       </section>
 
@@ -311,7 +310,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="footer-bottom">
-            <span>© 2026 Amana Protocol. Open source MIT license.</span>
+            <span>© 2026 Amana Protocol. All rights reserved.</span>
             <span>Built with wagmi v2 + Next.js 14</span>
           </div>
         </div>

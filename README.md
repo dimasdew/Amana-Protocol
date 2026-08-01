@@ -177,7 +177,7 @@ amana-protocol/
 
 ## 📄 License
 
-MIT — free to use for your portfolio, learning, or as a starting point for production.
+© 2026 Dimas Dewantara. All rights reserved.
 
 ---
 
