@@ -35,14 +35,21 @@ A full-featured DEX (Decentralized Exchange) frontend built with Next.js 14, wag
 - Top Pools by Volume table (24H / 7D / 30D)
 - Fee tier badges (0.01% / 0.05% / 0.30% / 1.00%)
 
+### 📊 Portfolio & Analytics
+- Portfolio overview page (holdings, positions, net worth)
+- Analytics dashboard (protocol metrics, charts via Recharts)
+- Transaction history page
+- Settings page
+
 ### 🔧 Global
-- Sticky navbar with chain indicator
+- Sticky navbar with chain indicator + global search modal
 - Live price ticker bar
 - Left sidebar navigation
 - Right panel: Gas tracker, Portfolio summary, Recent activity
+- Notification panel
 - RainbowKit wallet connection (MetaMask, WalletConnect, Coinbase, etc.)
 - Full TypeScript support
-- Dark theme throughout
+- Dark / light theme toggle (next-themes)
 
 ---
 
@@ -108,36 +115,59 @@ npm run start
 ```
 amana-protocol/
 ├── app/
-│   ├── (app)/               # Route group — main app shell
-│   │   ├── layout.tsx       # Navbar + Sidebar + TickerBar + RightPanel
-│   │   ├── page.tsx         # Swap page (/)
-│   │   ├── stake/page.tsx   # Staking page
-│   │   ├── lend/page.tsx    # Lending/Borrowing page
-│   │   └── liquidity/page.tsx # Liquidity pools page
-│   ├── layout.tsx           # Root layout (fonts, providers, metadata)
+│   ├── (landing)/           # Marketing landing (own layout + landing.css)
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── landing.css
+│   ├── dex/                 # App shell — Navbar + Sidebar + TickerBar + RightPanel
+│   │   ├── layout.tsx
+│   │   ├── page.tsx         # Swap (/dex)
+│   │   ├── stake/           # Staking
+│   │   ├── lend/            # Lending / Borrowing
+│   │   ├── liquidity/       # Liquidity pools
+│   │   ├── portfolio/       # Portfolio overview
+│   │   ├── transactions/    # Transaction history
+│   │   ├── analytics/       # Analytics dashboard
+│   │   └── settings/        # Settings
+│   ├── layout.tsx           # Root layout (fonts, providers, theme, metadata)
 │   └── globals.css
 ├── components/
-│   ├── ui/                  # Reusable atoms
-│   │   ├── token-icon.tsx   # TokenIcon + TokenPair
-│   │   └── stat-card.tsx
+│   ├── ui/                  # Atoms — token-icon, stat-card, theme-toggle,
+│   │                        #   toast, action-modal, oracle-badge, demo-badge
 │   ├── features/
-│   │   ├── layout/          # Navbar, Sidebar, TickerBar, RightPanel
+│   │   ├── layout/          # Navbar, Sidebar, TickerBar, RightPanel,
+│   │   │                    #   NotificationPanel, SearchModal
 │   │   ├── swap/            # SwapPanel, PriceChart
 │   │   ├── stake/           # StakePoolCard
 │   │   ├── lend/            # LendAssetRow, PositionPanel
 │   │   └── liquidity/       # PoolRow
-│   └── providers.tsx        # wagmi + RainbowKit + TanStack Query
+│   └── providers.tsx        # wagmi + RainbowKit + TanStack Query + theme
 ├── hooks/
-│   └── use-swap.ts          # useSwapQuote, useTokenBalance
+│   ├── use-swap.ts          # useSwapQuote, useTokenBalance
+│   └── use-lending.ts       # Lending/borrowing state
 ├── lib/
 │   ├── utils.ts             # cn(), formatUSD(), formatToken(), etc.
 │   ├── wagmi.ts             # wagmi config + supported chains
+│   ├── chainlink/           # Oracle price feeds
+│   ├── lending/             # Lending math / helpers
 │   └── mock-data.ts         # Token list, pool data, stake pools
 ├── store/
 │   └── index.ts             # Zustand stores (swap settings, UI state)
 └── types/
     └── index.ts             # Token, Pool, StakePool, LendAsset, etc.
 ```
+
+---
+
+## 🎨 Design System
+
+Part of a shared design system across my apps ([Design-System.md](../Design-System.md)) — Amana's dex app is the **reference implementation** for component architecture.
+
+- **Spacing** — 4px scale (4 / 8 / 12 / 16 / 20 / 24 / 32 / 48 / 64 / 80 / 128)
+- **Radius** — 8 / 12 / 16 / full, all via tokens
+- **Breakpoints** — mobile-first (`min-width` 640 / 768 / 1024); landing migrated, dex app on Tailwind's mobile-first defaults
+- **Type** — landing and dex app keep separate typographic scales by design (marketing hero vs information density)
+- **Color** — gold/bronze/sand palette via CSS variables, unchanged across the system
 
 ---
 
@@ -165,11 +195,12 @@ amana-protocol/
 
 ## 📝 Roadmap
 
-- [ ] Token selector modal with search
+- [x] Mobile responsive layout (mobile-first breakpoints)
+- [x] Dark / light theme toggle (next-themes)
+- [x] Token search modal
+- [x] Transaction history page
+- [x] Portfolio & analytics pages
 - [ ] Multi-hop routing visualization
-- [ ] Transaction history page
-- [ ] Mobile responsive layout
-- [ ] Dark/light theme toggle
 - [ ] Real on-chain data via The Graph subgraphs
 - [ ] Actual swap execution via Uniswap SDK
 
